@@ -1,1 +1,21 @@
 /* You can add global styles to this file, and also import other style files */
+@import "tailwindcss";
+@import url('https://fonts.googleapis.com/css2?family=Anonymous+Pro:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+
+@theme {
+  --main-font: "Anonymous Pro", monospace;
+  --nav-height: 100%;
+  --nav-width: 50vw;
+  --container-max-width: 1920px;
+  --header-max-height: 100vh;
+  --body-general-bg-color: black;
+}
+
+* {
+  font-family: var(--main-font), sans-serif;
+  color: white;
+}
+
+body{
+  background: var(--body-general-bg-color);
+}
