@@ -7,6 +7,7 @@ import {NgOptimizedImage} from '@angular/common';
   selector: 'app-header',
   imports: [
     HeroDetails,
+    Navigation
   ],
   templateUrl: './header.html',
   styleUrl: './header.css'

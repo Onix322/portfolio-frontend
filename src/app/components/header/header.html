@@ -1,11 +1,13 @@
 <header class="
   h-(--header-max-height) w-full max-w-(--container-max-width)
   justify-self-center
-  relative
-  mt-[calc(50vh-calc(1080px/2))]
-  border-2 border-green-600
+  pr-(--general-padding)
+  pl-(--general-padding)
   bg-black
-  grid grid-cols-2 grid-rows-1 gap-10">
-  <app-hero-details></app-hero-details>
-  <img class="w-full h-full border-1 border-white" src="" alt=""/>
+  grid grid-cols-1 grid-rows-(--header-grid-template)">
+  <app-navigation></app-navigation>
+  <div id="header-content" class="flex">
+    <app-hero-details class="justify-self-start w-2/4"></app-hero-details>
+    <img class="w-1/2 object-contain justify-self-end " src="profil.png" alt="profile.png" />
+  </div>
 </header>

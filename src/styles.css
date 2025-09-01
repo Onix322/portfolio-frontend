@@ -1,17 +1,21 @@
-@import url('https://fonts.googleapis.com/css2?family=Anonymous+Pro:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=UnifrakturMaguntia&display=swap');
 @import "tailwindcss";
 
 @layer theme{
   :root {
-    --main-font: "Anonymous Pro", monospace;
-    --nav-height: 100%;
-    --nav-width: 50vw;
+    --logo-font: "UnifrakturMaguntia", cursive;
+    --main-font: "Roboto Condensed", sans-serif;
+    --nav-max-height: 90px;
+    --nav-width: 100%;
     --container-max-width: 1920px;
     --header-max-height: 1080px;
+    --header-grid-template: var(--nav-max-height) calc(var(--header-max-height) - var(--nav-max-height));
     --body-general-bg-color: black;
-    --title-main-font-size: 40px;
-    --title-second-font-size: 30px;
+    --title-main-font-size: 64px;
+    --title-second-font-size: 24px;
     --general-font-size: 18px;
+    --general-padding: 6em;
   }
 }
 
