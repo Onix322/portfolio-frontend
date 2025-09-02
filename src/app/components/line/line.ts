@@ -7,9 +7,6 @@ import {Component, Input} from '@angular/core';
   styleUrl: './line.css'
 })
 export class Line {
-  @Input() size: string = "0";
-
-  constructor() {
-
-  }
+  @Input() size: number = 10;
+  @Input() absolute: boolean = false;
 }
