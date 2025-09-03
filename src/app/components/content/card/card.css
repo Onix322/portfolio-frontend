@@ -1,0 +1,14 @@
+li > p::before {
+  content: "> "; /* Insert content that looks like bullets */
+  font-size: 20px;
+  padding: 0 !important;
+  margin: 0 !important;
+}
+
+#card {
+  background: linear-gradient(180deg,#FFF7CF 0%, #FFD8AB 100%);
+}
+
+#card *{
+  color: black !important;
+}

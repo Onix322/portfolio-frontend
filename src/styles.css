@@ -29,6 +29,19 @@
   font-size: var(--general-font-size);
 }
 
+h1, h2, h3, h4, h5, h6{
+  padding: 0;
+  margin: 0;
+}
+
+h2 {
+  font-size: 40px;
+}
+
+h3 {
+  font-size: 30px;
+}
+
 body{
   background: var(--body-general-bg-color);
   height: 200vh;

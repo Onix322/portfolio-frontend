@@ -1,0 +1,37 @@
+<article id="card" class="flex gap-6 justify-self-center
+      max-w-[1100px] w-full max-h-[800] h-full
+      rounded-[20px]
+      *:max-w-[1/2] *:w-full p-[60px]">
+  <div class="flex flex-col gap-6">
+    <h3 class="font-bold">{{name}}</h3>
+    <p>{{description}}</p>
+    <ul id="tech-stack" class="flex
+        gap-7 w-fit flex flex-wrap">
+      @for (skill of stack; track skill){
+        <li>
+          <p>{{skill}}</p>
+          <app-line [size]="50"></app-line>
+        </li>
+      }
+    </ul>
+
+    @if (hasTestimonial){
+      <div id="testimonial" class="rounded-[10px]
+            p-5
+            max-w-fit w-full max-h-[200px] h-full
+            bg-white shadow-lg shadow-outline
+            flex gap-4">
+        <img class="object-cover w-[5rem] h-[5rem]
+            rounded-[100%]
+            bg-gray-600" alt="" src="">
+        <div>
+          <h4>{{testimonialName}}</h4>
+          <p>{{testimonial}}</p>
+        </div>
+      </div>
+    }
+  </div>
+  <div>
+
+  </div>
+</article>
