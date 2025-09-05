@@ -1,0 +1,26 @@
+header{
+  /*background-image: radial-gradient(circle, #25221d, black);*/
+  /*position: relative;*/
+  perspective: 1920px !important;
+}
+
+#header-container{
+  /*background-color: rgba(255, 255, 255, 0.02);*/
+  box-shadow: 0 0 70px 20px #181613;
+  margin-top: 50px;
+  border-radius: 20px;
+  /*position: relative;*/
+  /*transform-style: preserve-3d;*/
+  transition: 0.2s;
+  overflow: hidden;
+}
+
+#mouse-blur{
+  z-index: -999;
+  width: 50rem;
+  height: 50rem;
+  border-radius: 100%;
+  background-image: radial-gradient(#212020, black);
+  position: absolute;
+  filter: blur(200px);
+}

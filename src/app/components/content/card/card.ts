@@ -1,11 +1,13 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {Line} from "../../line/line";
 import {NgIf} from '@angular/common';
+import {Button} from '../../button/button';
 
 @Component({
   selector: 'app-card',
   imports: [
-    Line
+    Line,
+    Button
   ],
   templateUrl: './card.html',
   styleUrl: './card.css'
@@ -18,6 +20,7 @@ export class Card implements OnInit{
   @Input() hasTestimonial:boolean =false
   @Input() testimonialName:string =""
   @Input() testimonial:string =""
+  @Input() link:string =""
 
   ngOnInit(): void {
     if(this.hasTestimonial && (this.testimonial == "" || this.testimonial == " ")){

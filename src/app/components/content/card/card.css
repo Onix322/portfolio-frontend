@@ -4,11 +4,3 @@ li > p::before {
   padding: 0 !important;
   margin: 0 !important;
 }
-
-#card {
-  background: linear-gradient(180deg,#FFF7CF 0%, #FFD8AB 100%);
-}
-
-#card *{
-  color: black !important;
-}

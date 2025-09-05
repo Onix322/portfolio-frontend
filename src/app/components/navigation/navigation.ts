@@ -1,12 +1,10 @@
-import { Component } from '@angular/core';
-import {Line} from '../line/line';
+import {Component} from '@angular/core';
 import {FormsModule} from '@angular/forms';
-import {HireMeButton} from '../hire-me-button/hire-me-button';
+import {HireMeButton} from '../button/hire-me-button/hire-me-button';
 
 @Component({
   selector: 'app-navigation',
   imports: [
-    Line,
     FormsModule,
     HireMeButton
   ],

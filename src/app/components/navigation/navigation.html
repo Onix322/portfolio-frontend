@@ -2,19 +2,13 @@
   mt-4
   h-(--nav-max-height) h-full w-full
   content-center flex flex-row items-center justify-between">
-  <div class="
-    flex flex-col content-center
-    relative
-    h-full">
-    <h1 class="!font-(family-name:--logo-font) !text-[64px]">AD</h1>
-    <app-line [size]="220" class="absolute bottom-1"></app-line>
-  </div>
+  <h1 class="!font-(family-name:--logo-font) !text-[54px]">AD.</h1>
   <ol class="flex flex-row justify-self-end gap-10
       *:cursor-pointer">
-    <li tabindex="0">Work</li>
-    <li tabindex="0">Curriculum Vitae</li>
-    <li tabindex="0">
+    <a tabindex="0">Work</a>
+    <a tabindex="0">Curriculum Vitae</a>
+    <a tabindex="0">
       <app-hire-me-button href="/contact"></app-hire-me-button>
-    </li>
+    </a>
   </ol>
 </nav>

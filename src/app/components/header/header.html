@@ -1,13 +1,14 @@
-<header class="
-  h-(--header-max-height) w-full max-w-(--container-max-width)
-  justify-self-center
-  pr-(--general-padding)
-  pl-(--general-padding)
-  bg-black
-  grid grid-cols-1 grid-rows-(--header-grid-template)">
-  <app-navigation></app-navigation>
-  <div id="header-content" class="flex">
-    <app-hero-details class="justify-self-start w-2/4"></app-hero-details>
-    <img class="w-1/2 object-contain justify-self-end " src="profil.png" alt="profile.png" />
+<header class="h-(--header-max-height) w-full">
+  <div id="header-container" #headerContainer class="pl-(--general-padding) pr-(--general-padding)
+  grid grid-cols-1 grid-rows-(--header-grid-template) justify-self-center
+  max-w-(--container-max-width) w-full h-full">
+    <app-navigation></app-navigation>
+    <div id="header-content" class="flex">
+      <app-hero-details class="justify-self-start w-2/4"></app-hero-details>
+    </div>
+
+    <div id="mouse-blur" #mouseBlur>
+
+    </div>
   </div>
 </header>

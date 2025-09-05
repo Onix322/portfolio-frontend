@@ -3,17 +3,21 @@
   h-[fit-content]
   justify-self-center">
 
-  <section class="*:mt-20 flex justify-between">
-    <div>
+  <section class="*:mt-20 flex justify-between relative">
+    <div class="sticky top-10 h-full">
       <h3 class="!pb-2 !text-[20px]">Work</h3>
       <app-line [size]="80"></app-line>
       <h2>Results</h2>
     </div>
     <div>
-      <app-card name="Project name" [stack]="['HTML', 'CSS', 'TypeScript', 'Java']" [hasTestimonial]=true testimonialName="Customer's name"
+      <app-card name="Project name"
+                [stack]="['HTML', 'CSS', 'TypeScript', 'Java']"
+                [hasTestimonial]=true
+                testimonialName="Customer's name"
                 testimonial="testi testi testi testi testi testi testi testi testi testi testi testi testi testi testi "
-                description="Project description Project description Project description Project description Project description Project description vProject description Project description Project description "></app-card>
-
+                description="Project description Project description Project description Project description Project description Project description vProject description Project description Project description "
+                link=""
+      ></app-card>
     </div>
   </section>
 </main>

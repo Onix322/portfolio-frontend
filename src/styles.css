@@ -45,6 +45,7 @@ h3 {
 body{
   background: var(--body-general-bg-color);
   height: 200vh;
+  scroll-behavior: smooth;
 }
 
 a:hover {
