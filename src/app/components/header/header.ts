@@ -15,40 +15,34 @@ export class Header implements AfterViewInit {
 
   @ViewChild("headerContainer")
   private headerContainer: ElementRef<HTMLElement> | undefined;
-  @ViewChild("mouseBlur")
-  private mouseBlur: ElementRef<HTMLElement> | undefined;
+  @ViewChild("headerContainerShadow")
+  private headerContainerShadow: ElementRef<HTMLElement> | undefined;
 
   ngAfterViewInit(): void {
     this.hoverCardAnimation()
-    this.hoverMouseBlurAnimation()
-  }
-
-  public hoverMouseBlurAnimation(){
-    if (!this.mouseBlur) return;
-    let mouse: HTMLElement = this.mouseBlur.nativeElement;
-
-    window.addEventListener("mousemove", (e) => {
-      mouse.style.top = (e.screenY - mouse.offsetHeight) * -1.2 + "px"
-      mouse.style.right = (e.screenX - mouse.offsetWidth) * 1.2 + 300 + "px"
-    })
-
   }
 
   public hoverCardAnimation(): void {
-    if (!this.headerContainer) return;
+    if (!this.headerContainer || !this.headerContainerShadow){
+      console.error("Element undefined")
+      return;
+    }
 
     let container: HTMLElement = this.headerContainer.nativeElement;
+    let shadow: HTMLElement = this.headerContainerShadow.nativeElement;
     let cutBy = 900;
 
     container.addEventListener("mousemove", (e) => {
       let coordinates: any = this.getCardMousePositionIn(container, e.screenX, e.screenY)
       container.style.transform = "rotateX(" + coordinates.positionX / cutBy + "deg)"
-        + "rotateY(" + coordinates.positionY / cutBy + "deg)";
+        + "rotateY(" + coordinates.positionY / cutBy + "deg) translateX(-50%)";
+
+      shadow.style.boxShadow = ((e.screenX / 2 - 500) + "px " +(e.screenY / 2 - 400) + "px 400px -200px #181613")
     })
     this.headerContainer.nativeElement.addEventListener("mouseout", (e) => {
-      container.style.transform = "rotateX(0deg) rotateY(0deg)";
-      // mouse.style.marginTop = "0"
-      // mouse.style.marginLeft = "0"
+      container.style.transition = "0.2s ease";
+      container.style.transform = "";
+      container.style.boxShadow = "0 0 70px 20px #181613"
     })
   }
 
