@@ -1,13 +1,8 @@
-import {Component} from '@angular/core';
-import {FormsModule} from '@angular/forms';
-import {HireMeButton} from '../button/hire-me-button/hire-me-button';
+import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-navigation',
-  imports: [
-    FormsModule,
-    HireMeButton
-  ],
+  imports: [],
   templateUrl: './navigation.html',
   styleUrl: './navigation.css'
 })

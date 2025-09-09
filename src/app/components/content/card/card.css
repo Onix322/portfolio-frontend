@@ -1,6 +1,0 @@
-li > p::before {
-  content: "> "; /* Insert content that looks like bullets */
-  font-size: 20px;
-  padding: 0 !important;
-  margin: 0 !important;
-}

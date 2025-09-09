@@ -1,12 +1,27 @@
-<header class="h-(--header-max-height) w-full">
-  <div id="header-container" #headerContainer class="header-container">
-    <app-navigation></app-navigation>
-    <div id="header-content" class="flex">
-      <app-hero-details class="justify-self-start w-2/4"></app-hero-details>
+<header id="header" class="m-auto border-1 border-red-600">
+  <div id="header-wrapper" class="relative m-auto border-1 border-white-600 box-border w-(--container-max-width) h-(--header-max-height)">
+    <div id="header-container" class="relative h-full w-full box-border border-1 border-blue-600">
+      <div>
+        <nav id="header-nav">
+          <ol>
+            <li>Work</li>
+            <li>Resume</li>
+            <li>Contact</li>
+          </ol>
+        </nav>
+        <div id="header-details">
+          <p>
+            HELLO! MY NAME IS ALEX.
+          </p>
+          <h1>FULL STACK SOFTWARE ENGINEER</h1>
+          <p>--</p>
+          <p>Java • Spring Boot • Angular • TypeScript • MySQL • JWT • REST APIs • CI/CD • Tailwind CSS</p>
+        </div>
+        <div>
+          <h1>Alexandru Dobos.</h1>
+        </div>
+      </div>
+      <img src="profil.png" class="absolute h-full top-[50%] left-[50%] translate-[-50%] grayscale-100" alt="">
     </div>
-
-  </div>
-  <div id="header-container-shadow" #headerContainerShadow class="header-container">
-
   </div>
 </header>
