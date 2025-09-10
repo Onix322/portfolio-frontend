@@ -1,27 +1,25 @@
-<header id="header" class="m-auto border-1 border-red-600">
-  <div id="header-wrapper" class="relative m-auto border-1 border-white-600 box-border w-(--container-max-width) h-(--header-max-height)">
-    <div id="header-container" class="relative h-full w-full box-border border-1 border-blue-600">
-      <div>
+<header id="header" class="m-auto">
+  <div id="header-wrapper" class="relative m-auto box-border max-w-(--container-max-width) h-(--header-max-height)">
+    <div id="header-container" class="relative h-full max-w-(--header-details-max-width) box-border">
+      <div class="grid grid-cols-[calc(50%+50px)_1fr] grid-rows-[90%_10%] h-full">
         <nav id="header-nav">
-          <ol>
-            <li>Work</li>
-            <li>Resume</li>
-            <li>Contact</li>
+          <ol class="w-fit relative top-20">
+            <li><h2>Work</h2></li>
+            <li><h2>Resume</h2></li>
+            <li><h2>Contact</h2></li>
           </ol>
         </nav>
-        <div id="header-details">
-          <p>
-            HELLO! MY NAME IS ALEX.
-          </p>
-          <h1>FULL STACK SOFTWARE ENGINEER</h1>
+        <div id="header-details" class="justify-self-end place-content-center">
+          <p class="tracking-[0.6em]">HELLO! MY NAME IS ALEX.</p>
+          <h1 class="!text-[96px] leading-[125px]">FULL STACK SOFTWARE ENGINEER</h1>
           <p>--</p>
-          <p>Java • Spring Boot • Angular • TypeScript • MySQL • JWT • REST APIs • CI/CD • Tailwind CSS</p>
+          <p class="uppercase">Java • Spring Boot • Angular • TypeScript • MySQL • JWT • REST APIs • CI/CD • Tailwind CSS</p>
         </div>
         <div>
-          <h1>Alexandru Dobos.</h1>
+          <h2>Alexandru Dobos.</h2>
         </div>
       </div>
-      <img src="profil.png" class="absolute h-full top-[50%] left-[50%] translate-[-50%] grayscale-100" alt="">
+      <img src="profil.png" class="absolute -z-1 w-(--header-image-width) top-[50%] left-[50%] translate-[-50%] grayscale-100" alt="">
     </div>
   </div>
 </header>

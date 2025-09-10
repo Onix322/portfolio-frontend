@@ -1,4 +1,15 @@
+
+#header{
+  --header-details-max-width: 65%;
+  --header-image-width: calc(var(--header-max-height) + 20px);
+  --header-grid-template: var(--nav-max-height) calc(var(--header-max-height) - var(--nav-max-height));
+}
+
 #header-container img{
   border: 6px solid;
   border-image: linear-gradient(-45deg, white 0%, black 50%, white 100%) 1;
+}
+
+#header-container{
+  justify-self: center;
 }

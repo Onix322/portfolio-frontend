@@ -1,16 +1,14 @@
-@import url('https://fonts.googleapis.com/css2?family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=UnifrakturMaguntia&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap');
 @import "tailwindcss";
 
 @layer theme{
   :root {
-    --logo-font: "UnifrakturMaguntia", cursive;
-    --main-font: "Roboto Condensed", sans-serif;
+    --head-font: "Playfair Display", serif;
+    --main-font: "Inter", sans-serif;
     --nav-max-height: 90px;
     --nav-width: 100%;
     --container-max-width: 1920px;
     --header-max-height: 1080px;
-    --header-grid-template: var(--nav-max-height) calc(var(--header-max-height) - var(--nav-max-height));
     --body-general-bg-color: black;
     --title-main-font-size: 64px;
     --title-second-font-size: 24px;
@@ -19,7 +17,7 @@
     --main-color: black;
     --second-color: red;
     --third-color: white;
-    --hover-color:  #5fd5fc;
+    --forth-color:  #C7F3FF;
   }
 }
 
@@ -28,10 +26,21 @@
   color: white;
   font-size: var(--general-font-size);
 }
-
-h1, h2, h3, h4, h5, h6{
+h1, h2, h3, h4, h5, h6, p{
   padding: 0;
   margin: 0;
+  width: fit-content;
+}
+h1, h2, h3, h4, h5, h6{
+  font-family: var(--head-font), serif;
+  font-weight: 900;
+  background-image: linear-gradient(45deg, var(--forth-color) 20%, var(--second-color) 100%);
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+h1{
+  font-size: 64px;
 }
 
 h2 {
