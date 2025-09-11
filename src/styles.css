@@ -16,7 +16,7 @@
     --general-padding: 6em;
     --main-color: black;
     --second-color: red;
-    --third-color: white;
+    --third-color: #ffffff;
     --forth-color:  #C7F3FF;
   }
 }
@@ -25,6 +25,11 @@
   font-family: var(--main-font), sans-serif;
   color: white;
   font-size: var(--general-font-size);
+  /*cursor: none;   FOR LATER */
+}
+
+*:hover{
+  /*cursor: none;   FOR LATER*/
 }
 h1, h2, h3, h4, h5, h6, p{
   padding: 0;
@@ -34,9 +39,19 @@ h1, h2, h3, h4, h5, h6, p{
 h1, h2, h3, h4, h5, h6{
   font-family: var(--head-font), serif;
   font-weight: 900;
-  background-image: linear-gradient(45deg, var(--forth-color) 20%, var(--second-color) 100%);
+  transition: 0.2s;
+  background: linear-gradient(50deg, var(--main-color) 10%, var(--third-color) 60%) 0;
   background-clip: text;
   -webkit-text-fill-color: transparent;
+}
+.nav-button{
+  background: linear-gradient(45deg, var(--main-color) 1%, var(--third-color) 60%) 0 ;
+  background-clip: text;
+  background-size: 150% 100%;
+  -webkit-text-fill-color: transparent !important;
+}
+.nav-button:hover{
+  background-position: 50%;
 }
 
 h1{
@@ -53,10 +68,10 @@ h3 {
 
 body{
   background: var(--body-general-bg-color);
-  /*height: 200vh;*/
+  height: 100svh;
   scroll-behavior: smooth;
+  cursor: none;
 }
 
-a:hover {
-  color: var(--hover-color);
-}
+
+
