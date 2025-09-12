@@ -25,11 +25,11 @@
   font-family: var(--main-font), sans-serif;
   color: white;
   font-size: var(--general-font-size);
-  /*cursor: none;   FOR LATER */
+  cursor: none;
 }
 
 *:hover{
-  /*cursor: none;   FOR LATER*/
+  /*cursor: none;*/
 }
 h1, h2, h3, h4, h5, h6, p{
   padding: 0;
@@ -70,7 +70,6 @@ body{
   background: var(--body-general-bg-color);
   height: 100svh;
   scroll-behavior: smooth;
-  cursor: none;
 }
 
 
