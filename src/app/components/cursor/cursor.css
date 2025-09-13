@@ -2,9 +2,16 @@
   position: absolute;
   top: 0;
   left: 0;
-  width: 32px;
-  height: 32px;
+  width: 52px;
+  height: 52px;
   pointer-events: none;
   transform: translate(-50%, -50%);
   z-index: 9999;
+  transition: .2s;
+  backdrop-filter: sepia(100%) brightness(70%);
+  border-radius: 50%;
+}
+
+.mf-cursor{
+  color: white !important;
 }

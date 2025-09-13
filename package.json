@@ -30,6 +30,8 @@
     "@angular/router": "^20.2.0",
     "@tailwindcss/postcss": "^4.1.12",
     "@tailwindcss/vite": "^4.1.13",
+    "gsap": "^3.13.0",
+    "mouse-follower": "^1.1.2",
     "postcss": "^8.5.6",
     "rxjs": "~7.8.0",
     "tailwindcss": "^4.1.13",

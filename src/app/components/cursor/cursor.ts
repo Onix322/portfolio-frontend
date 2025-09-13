@@ -1,32 +1,42 @@
-import {AfterViewInit, Component, ElementRef, ViewChild} from '@angular/core';
+import {AfterViewInit, Component, ElementRef, Injectable, ViewChild} from '@angular/core';
+import gsap from "gsap";
+import MouseFollower from 'mouse-follower';
 
 @Component({
   selector: 'app-cursor',
-  imports: [],
   templateUrl: './cursor.html',
   styleUrl: './cursor.css'
 })
-export class Cursor implements AfterViewInit {
+export class Cursor implements AfterViewInit{
 
   @ViewChild("cursor")
-  cursorRef: ElementRef | undefined;
+  private cursorRef: ElementRef | undefined;
+  private readonly cursor: MouseFollower;
 
-  ngAfterViewInit(): void {
-    if (!this.cursorRef) return;
+  constructor() {
+    MouseFollower.registerGSAP(gsap)
+    this.cursor = new MouseFollower();
+  }
 
-    let cursor: HTMLElement = this.cursorRef.nativeElement;
-    document.body.style.cursor = "none"
+  ngAfterViewInit() {
+    this.cursorInit()
+  }
 
+  public cursorInit() {
+    let cursorSVG: HTMLElement = this.cursorRef?.nativeElement;
 
-    window.addEventListener("mousemove", (e) => {
-      setTimeout(() => {
-        cursor.style.left = `${e.x - cursor.clientWidth / 2}px`
-        cursor.style.top = `${e.y - cursor.clientHeight / 2}px`
-      }, 100)
-    })
+    document.body.classList.add("cursor-none")
 
-    document.addEventListener("click", (e) => {
-      // MAKE ANIMATION FOR CLICK
-    })
+    document.body.onmousedown = ()=> {
+      cursorSVG.style.scale = "0.8"
+    }
+    document.body.onmouseup = ()=> {
+      cursorSVG.style.scale = "1"
+    }
+    this.cursor.show()
+    this.cursor.setMedia(cursorSVG)
+    this.cursor.container.firstChild?.before(this.cursor.el)
+    this.cursor.el.classList = "absolute z-999"
   }
 }
+
