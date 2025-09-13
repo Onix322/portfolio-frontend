@@ -6,8 +6,9 @@
 }
 
 #header-container img{
-  border: 6px solid;
-  border-image: linear-gradient(-45deg, white 0%, black 50%, white 100%) 1;
+  border-width: 6px;
+  border-style: solid;
+  border-image: linear-gradient(-45deg, var(--third-color) 0%, black 50%, var(--third-color) 100%) 1;
 }
 
 #header-container{

@@ -15,9 +15,9 @@
     --general-font-size: 18px;
     --general-padding: 6em;
     --main-color: black;
-    --second-color: red;
+    --second-color: #9b7843;
     --third-color: #ffffff;
-    --forth-color:  #C7F3FF;
+    --forth-color: #b7a55d;
   }
 }
 
@@ -25,6 +25,7 @@
   font-family: var(--main-font), sans-serif;
   color: white;
   font-size: var(--general-font-size);
+  cursor: none;
 }
 
 h1, h2, h3, h4, h5, h6, p{
@@ -36,7 +37,7 @@ h1, h2, h3, h4, h5, h6{
   font-family: var(--head-font), serif;
   font-weight: 900;
   transition: 0.2s;
-  background: linear-gradient(50deg, var(--main-color) 10%, var(--third-color) 60%) 0;
+  background: linear-gradient(50deg, var(--main-color) 10%, var(--second-color) 25%, var(--forth-color) 60%) 0;
   background-clip: text;
   -webkit-text-fill-color: transparent;
 }
