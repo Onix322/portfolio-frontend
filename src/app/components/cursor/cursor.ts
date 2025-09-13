@@ -1,4 +1,4 @@
-import {AfterViewInit, Component, ElementRef, Injectable, ViewChild} from '@angular/core';
+import {AfterViewInit, Component, ElementRef, Injectable, ViewChild, ViewChildren} from '@angular/core';
 import gsap from "gsap";
 import MouseFollower from 'mouse-follower';
 
@@ -14,8 +14,9 @@ export class Cursor implements AfterViewInit{
     speed: 0.55
   }
 
-  @ViewChild("cursor")
-  private cursorRef: ElementRef | undefined;
+  @ViewChild("cursor", {read: ElementRef})
+  private cursorSVGRef: ElementRef | undefined;
+
   private readonly cursor: MouseFollower;
 
   constructor() {
@@ -24,24 +25,23 @@ export class Cursor implements AfterViewInit{
   }
 
   ngAfterViewInit() {
-    this.cursorInit()
+    this.cursorInit(this.cursor)
   }
 
-  public cursorInit() {
-    let cursorSVG: HTMLElement = this.cursorRef?.nativeElement;
+  public cursorInit(cursor: MouseFollower) {
+    let cursorSVG: HTMLElement = this.cursorSVGRef?.nativeElement;
 
     document.body.classList.add("cursor-none")
 
-
-    this.mouseOver();
+    this.mouseAppearance();
     this.mouseClick(cursorSVG, ["-translate-1"]);
 
-    this.cursor.setMedia(cursorSVG)
-    this.cursor.container.firstChild?.before(this.cursor.el)
-    this.cursor.el.classList = "absolute z-999"
+    cursor.setMedia(cursorSVG)
+    cursor.container.firstChild?.before(this.cursor.el)
+    cursor.el.classList = "absolute z-999"
   }
 
-  private mouseOver(){
+  private mouseAppearance(){
     document.body.onmouseenter = ()=> {
       this.cursor.show()
     }

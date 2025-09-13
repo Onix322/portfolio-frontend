@@ -41,15 +41,6 @@ h1, h2, h3, h4, h5, h6{
   background-clip: text;
   -webkit-text-fill-color: transparent;
 }
-.nav-button{
-  background: linear-gradient(45deg, var(--main-color) 1%, var(--third-color) 60%) 0 ;
-  background-clip: text;
-  background-size: 150% 100%;
-  -webkit-text-fill-color: transparent !important;
-}
-.nav-button:hover{
-  background-position: 50%;
-}
 
 h1{
   font-size: 64px;
