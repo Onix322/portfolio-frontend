@@ -1,68 +1,128 @@
-import {AfterViewInit, Component, ElementRef, Injectable, ViewChild, ViewChildren} from '@angular/core';
+import {AfterViewInit, Component, ElementRef, ViewChild} from '@angular/core';
 import gsap from "gsap";
 import MouseFollower from 'mouse-follower';
+import {Sender} from '../../service/sender/sender';
+import {SenderEntry} from '../../service/sender/SenderEntry';
+import {BehaviorSubject} from 'rxjs';
 
 @Component({
   selector: 'app-cursor',
   templateUrl: './cursor.html',
   styleUrl: './cursor.css'
 })
-export class Cursor implements AfterViewInit{
+export class Cursor implements AfterViewInit {
 
   //for documentation https://github.com/Cuberto/mouse-follower
   private settings: any = {
     speed: 0.55
   }
 
+  private packages: BehaviorSubject<SenderEntry<any, any>[]> = new BehaviorSubject<SenderEntry<any, any>[]>(new Array<SenderEntry<any, any>>())
+
   @ViewChild("cursor", {read: ElementRef})
-  private cursorSVGRef: ElementRef | undefined;
+  private cursorSVGRef!: ElementRef;
 
   private readonly cursor: MouseFollower;
+  private readonly sender: Sender;
 
-  constructor() {
+  constructor(sender: Sender) {
     MouseFollower.registerGSAP(gsap)
     this.cursor = new MouseFollower(this.settings);
+    this.sender = sender;
   }
 
   ngAfterViewInit() {
-    this.cursorInit(this.cursor)
+    this.retrievePackages(this.sender)
+    let cursorSVG: HTMLElement = this.cursorSVGRef.nativeElement;
+    if (!cursorSVG) return;
+    this.cursorInit(this.cursor, cursorSVG)
+    this.mouseOverElements(this.packages, cursorSVG)
   }
 
-  public cursorInit(cursor: MouseFollower) {
-    let cursorSVG: HTMLElement = this.cursorSVGRef?.nativeElement;
+  public cursorInit(mouse: MouseFollower, media: HTMLElement): MouseFollower {
 
     document.body.classList.add("cursor-none")
 
-    this.mouseAppearance();
-    this.mouseClick(cursorSVG, ["-translate-1"]);
+    this.mouseAppearance(mouse, media);
+    this.mouseClick(media, ["-translate-1"]);
 
-    cursor.setMedia(cursorSVG)
-    cursor.container.firstChild?.before(this.cursor.el)
-    cursor.el.classList = "absolute z-999"
+    mouse.setMedia(media)
+    mouse.el.classList = "absolute z-999"
+    mouse.container.firstChild?.before(this.cursor.el)
+
+    return mouse;
   }
 
-  private mouseAppearance(){
+  private mouseAppearance(mouse: MouseFollower, media: HTMLElement) {
     document.body.onmouseenter = ()=> {
-      this.cursor.show()
+      mouse.show()
+      mouse.setMedia(media)
     }
     document.body.onmouseleave = ()=> {
-      this.cursor.hide()
+      mouse.hide()
+      mouse.removeMedia()
     }
   }
 
-  private mouseClick(cursorSVG: HTMLElement, className: string[]): void{
+  /*
+  * Use tailwind for elements customization
+  * */
+  private mouseClick(media: HTMLElement, className: string[]): void {
     document.body.onmousedown = ()=> {
-      cursorSVG.style.scale = "0.8"
+      media.style.scale = "0.8"
       className.forEach((cn) => {
-        cursorSVG.classList.add(cn)
+        media.classList.add(cn)
       })
     }
     document.body.onmouseup = ()=> {
-      cursorSVG.style.scale = "1"
+      media.style.scale = "1"
       className.forEach((cn) => {
-        cursorSVG.classList.remove(cn)
+        media.classList.remove(cn)
       })
     }
+  }
+
+  private retrievePackages(sender: Sender) {
+    sender.retrieve(Cursor)
+      .subscribe({
+        next: (e) => {
+          console.log(e)
+          this.packages.next(e)
+        }
+      })
+  }
+
+  private mouseOverElements(elements: BehaviorSubject<SenderEntry<any, any>[]>, media: HTMLElement) {
+    elements.subscribe({
+      next: (array) =>{
+        array.forEach(se => {
+          se.packages.forEach(p =>{
+            this.mouseOverElement((<ElementRef>p).nativeElement, media)
+          })
+        })
+      }
+    })
+  }
+
+  private mouseOverElement(element: HTMLElement, media: HTMLElement) {
+    let originalWidth = media.clientWidth;
+    let originalHeight = media.clientHeight;
+    let originalBorderRadius = media.style.borderRadius;
+    let originalBorderColor = media.style.borderColor;
+
+    element.addEventListener("mouseenter", (me) => {
+      media.style.width = `${element.offsetWidth}px`
+      media.style.height = `${element.offsetHeight}px`
+      media.style.borderRadius = `20px`
+      media.style.borderColor = `var(--forth-color)`
+      media.replaceChildren()
+    })
+    element.addEventListener("mouseleave", (me) => {
+      media.style.width = `${originalWidth}px`
+      media.style.height = `${originalHeight}px`
+      media.style.borderRadius = originalBorderRadius
+      media.style.borderColor = originalBorderColor
+    })
   }
 }
 

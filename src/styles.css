@@ -37,7 +37,7 @@ h1, h2, h3, h4, h5, h6{
   font-family: var(--head-font), serif;
   font-weight: 900;
   transition: 0.2s;
-  background: linear-gradient(50deg, var(--main-color) 10%, var(--second-color) 25%, var(--forth-color) 60%) 0;
+  background: linear-gradient(50deg, var(--main-color) 10%, var(--second-color) 35%, var(--forth-color) 60%) 0;
   background-clip: text;
   -webkit-text-fill-color: transparent;
 }
