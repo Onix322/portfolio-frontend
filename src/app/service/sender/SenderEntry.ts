@@ -3,12 +3,12 @@ import {Type} from '@angular/core';
 export class SenderEntry<D, S> {
   private _destination: Type<D>;
   private _sender: Type<S>;
-  private _packages: Array<any>;
+  private _parcel: any;
 
-  constructor(destination: Type<D>, sender: Type<S>, packages: Array<any>) {
+  constructor(destination: Type<D>, sender: Type<S>, parcel: any) {
     this._destination = destination;
     this._sender = sender;
-    this._packages = packages;
+    this._parcel = parcel;
   }
 
   get destination(): Type<D> {
@@ -27,15 +27,11 @@ export class SenderEntry<D, S> {
     this._sender = value;
   }
 
-  get packages(): Array<any> {
-    return this._packages.slice();
+  get parcel(): any {
+    return this._parcel;
   }
 
-  set packages(value: Array<any>) {
-    this._packages = value;
-  }
-
-  public addPackage(p: any) {
-    this._packages.push(p)
+  set parcel(value: any) {
+    this._parcel = value;
   }
 }

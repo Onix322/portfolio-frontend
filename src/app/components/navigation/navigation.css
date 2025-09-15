@@ -1,0 +1,10 @@
+.nav-button{
+  background-color: var(--second-color);
+  box-sizing: border-box !important;
+  border-radius: 0.2em;
+  border:6px solid transparent;
+  transition: 0.2s !important;
+}
+.nav-button:hover{
+  filter: brightness(130%) ;
+}

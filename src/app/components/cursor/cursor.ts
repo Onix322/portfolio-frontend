@@ -11,16 +11,51 @@ import {BehaviorSubject} from 'rxjs';
   styleUrl: './cursor.css'
 })
 export class Cursor implements AfterViewInit {
-
+  //Mouse Follower
   //for documentation https://github.com/Cuberto/mouse-follower
   private settings: any = {
-    speed: 0.55
+    el: null,
+    container: document.body,
+    className: 'mf-cursor',
+    innerClassName: 'mf-cursor-inner',
+    textClassName: 'mf-cursor-text',
+    mediaClassName: 'mf-cursor-media',
+    mediaBoxClassName: 'mf-cursor-media-box',
+    iconSvgClassName: 'mf-svgsprite',
+    iconSvgNamePrefix: '-',
+    iconSvgSrc: '',
+    dataAttr: 'cursor',
+    hiddenState: '-hidden',
+    textState: '-text',
+    iconState: '-icon',
+    activeState: '-active',
+    mediaState: '-media',
+    stateDetection: {
+      '-pointer': 'a,button',
+      '-hidden': 'iframe'
+    },
+    visible: true,
+    visibleOnState: false,
+    speed: 0.35,
+    ease: 'expo.out',
+    overwrite: true,
+    skewing: 2,
+    skewingText: 2,
+    skewingIcon: 2,
+    skewingMedia: 2,
+    skewingDelta: 0.001,
+    skewingDeltaMax: 0.15,
+    stickDelta: 0,
+    showTimeout: 0,
+    hideOnLeave: true,
+    hideTimeout: 0,
+    hideMediaTimeout: 0
   }
 
   private packages: BehaviorSubject<SenderEntry<any, any>[]> = new BehaviorSubject<SenderEntry<any, any>[]>(new Array<SenderEntry<any, any>>())
 
   @ViewChild("cursor", {read: ElementRef})
-  private cursorSVGRef!: ElementRef;
+  private cursorDivRef!: ElementRef;
 
   private readonly cursor: MouseFollower;
   private readonly sender: Sender;
@@ -33,10 +68,20 @@ export class Cursor implements AfterViewInit {
 
   ngAfterViewInit() {
     this.retrievePackages(this.sender)
-    let cursorSVG: HTMLElement = this.cursorSVGRef.nativeElement;
-    if (!cursorSVG) return;
-    this.cursorInit(this.cursor, cursorSVG)
-    this.mouseOverElements(this.packages, cursorSVG)
+    let cursorDiv: HTMLElement = this.cursorDivRef.nativeElement;
+    if (!cursorDiv) return;
+    this.cursorInit(this.cursor, cursorDiv)
+    this.mouseOverElements(this.packages, this.cursor, cursorDiv)
+  }
+
+  private retrievePackages(sender: Sender) {
+    sender.retrieve(Cursor)
+      .subscribe({
+        next: (e) => {
+          console.log(e)
+          this.packages.next(e)
+        }
+      })
   }
 
   public cursorInit(mouse: MouseFollower, media: HTMLElement): MouseFollower {
@@ -82,29 +127,17 @@ export class Cursor implements AfterViewInit {
     }
   }
 
-  private retrievePackages(sender: Sender) {
-    sender.retrieve(Cursor)
-      .subscribe({
-        next: (e) => {
-          console.log(e)
-          this.packages.next(e)
-        }
-      })
-  }
-
-  private mouseOverElements(elements: BehaviorSubject<SenderEntry<any, any>[]>, media: HTMLElement) {
+  private mouseOverElements(elements: BehaviorSubject<SenderEntry<any, any>[]>, mouse: MouseFollower, media: HTMLElement) {
     elements.subscribe({
       next: (array) =>{
         array.forEach(se => {
-          se.packages.forEach(p =>{
-            this.mouseOverElement((<ElementRef>p).nativeElement, media)
-          })
+          this.mouseOverElement((<ElementRef>se.parcel).nativeElement, mouse, media)
         })
       }
     })
   }
 
-  private mouseOverElement(element: HTMLElement, media: HTMLElement) {
+  private mouseOverElement(element: HTMLElement, mouse: MouseFollower, media: HTMLElement) {
     let originalWidth = media.clientWidth;
     let originalHeight = media.clientHeight;
     let originalBorderRadius = media.style.borderRadius;
@@ -115,13 +148,15 @@ export class Cursor implements AfterViewInit {
       media.style.height = `${element.offsetHeight}px`
       media.style.borderRadius = `20px`
       media.style.borderColor = `var(--forth-color)`
-      media.replaceChildren()
+      mouse.setSkewing(0)
+      mouse.setStick(element)
     })
     element.addEventListener("mouseleave", (me) => {
       media.style.width = `${originalWidth}px`
       media.style.height = `${originalHeight}px`
       media.style.borderRadius = originalBorderRadius
       media.style.borderColor = originalBorderColor
+      mouse.setSkewing(this.settings.skewing)
     })
   }
 }

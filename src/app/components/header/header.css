@@ -8,21 +8,10 @@
 #header-container img{
   border-width: 6px;
   border-style: solid;
-  border-image: linear-gradient(-45deg, var(--third-color) 0%, black 50%, var(--third-color) 100%) 1;
+    border-image: linear-gradient(-45deg, var(--third-color) -80%, black 50%, var(--third-color) 140%) 1;
 }
 
 #header-container{
   justify-self: center;
-}
-
-.nav-button{
-  background-color: var(--second-color);
-  box-sizing: border-box !important;
-  border-radius: 0.2em;
-  border:6px solid transparent;
-  transition: 0.2s !important;
-}
-.nav-button:hover{
-  filter: brightness(130%) ;
 }
 
