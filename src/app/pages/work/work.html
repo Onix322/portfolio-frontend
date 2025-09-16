@@ -1,8 +1,8 @@
-<main class="h-[100%] place-content-center w-fit">
+<main class="h-[100%] !max-w-[100svw] place-content-center w-fit">
   <app-navigation [vertical]="false" class="sticky ml-100px top-0 left-0"></app-navigation>
-  <section class="max-h-(--header-max-height) h-[100%] border-1 *:border-1 flex flex-row">
+  <section #projectsContainer class="max-h-(--header-max-height) h-[100%] border-1 ">
     @for (i of num; track i) {
-      <article id="project" class="w-[500px] h-[100%]">
+      <article id="project" class="h-[100%]">
 
       </article>
     }
