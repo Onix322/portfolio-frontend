@@ -4,30 +4,31 @@ main{
   overflow: hidden !important;
   scroll-behavior: smooth;
   box-sizing: border-box;
-  border: 1px solid blue;
 }
 
 section{
   --article-width: 500px;
   position: relative;
   width: 100%;
-  overflow: scroll;
-  overflow-y: hidden;
-  /*scroll-behavior: smooth;*/
+  overflow: hidden;
+  /*overflow-x: scroll;*/
   transition: 1s all linear;
-  border: 1px solid white;
   display: grid;
-  gap: 20px;
-  grid-auto-flow: column;
-  grid-template-rows: 100%;
+  gap: 10px;
   grid-template-columns: repeat(auto-fill, 500px);
+  grid-template-rows: 100%;
+  grid-auto-flow: column;
 }
 
 article{
   max-width: var(--article-width);
   width: 500px;
-  /*position: absolute;*/
-  flex-basis: 500px;
+  position: relative;
+  box-sizing: border-box;
   border: 1px solid red;
+  border-radius: 20px;
+  transition: 0.1s ease-in;
+  left: 0;
 }
+
 
