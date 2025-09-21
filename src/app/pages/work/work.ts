@@ -3,7 +3,6 @@ import {Navigation} from '../../components/navigation/navigation';
 import {gsap} from "gsap";
 
 import {ScrollTrigger} from "gsap/ScrollTrigger";
-// ScrollSmoother requires ScrollTrigger
 import {ScrollSmoother} from "gsap/ScrollSmoother";
 
 @Component({
@@ -22,7 +21,10 @@ export class Work implements OnInit, AfterViewInit {
   private native: HTMLElement | undefined;
 
   //animation settings
-  private scrollBy = 500
+  private scrollBy: number = 500 //px
+  private duration: number = 0.2 //ms
+  private rotationY = 15; //deg
+
 
   //wheel events limit
   private wheelQueue: WheelEvent[] = [];
@@ -49,7 +51,6 @@ export class Work implements OnInit, AfterViewInit {
         this.wheelQueue.shift();
       }
       this.wheelQueue.push(e);
-      console.log(this.wheelQueue)
       this.processQueue(this.wheelQueue, elementForListener)
     })
   }
@@ -75,72 +76,30 @@ export class Work implements OnInit, AfterViewInit {
     let children: HTMLCollectionOf<HTMLElement> = <HTMLCollectionOf<HTMLElement>>native.children
     const projects: Array<HTMLElement> = gsap.utils.toArray(children)
 
-    console.log(this.current)
+    projects.forEach((project) => {
+      if (this.current < 0) return
+      gsap.to(project, {
+        left: this.scrollBy * (0 - this.current),
+        transitionDuration: this.duration,
+        duration: this.duration,
+        scrollTrigger: {
+          trigger: project,
+          start: 'left, right',
+          end: "left 10%",
+          scrub: true,
+          onchange: ev => {
+            console.log("change")
+          }
+        }
+      })
+    })
 
     if (event.deltaY > 0 && this.current < projects.length - 1) {
       this.current++
     }
     if (event.deltaY < 0 && this.current > -1) {
+      this.rotationY = 0 - this.rotationY
       this.current--
     }
-
-    projects.forEach((project) => {
-      gsap.to(project, {
-        left: this.scrollBy * (-1 - this.current),
-        scrollTrigger: {
-          trigger: project,
-          start: 'left, right',
-          end: "left 10%",
-          scrub: true
-        },
-        ease: "elastic",
-        duration: 1000
-      })
-    })
   }
-
-  // ngAfterViewInit(): void {
-  //   let native: HTMLElement = this.projectsContainerRef.nativeElement
-  //   let children: HTMLCollectionOf<HTMLElement> = <HTMLCollectionOf<HTMLElement>>native.children
-  //   let scrollBy = 500
-  //   let index = 0;
-  //   let leftSentence: string = "+=100";
-  //   let lastTime = 0;
-  //   const throttleDelay = 300; // ms
-  //
-  //   const projects: Array<HTMLElement> = gsap.utils.toArray(children)
-  //
-  //   native.addEventListener("wheel", (e) => {
-  //
-  //     const now = Date.now();
-  //     if (now - lastTime < throttleDelay) {
-  //       leftSentence = `-=${scrollBy}`
-  //       return
-  //     }
-  //     lastTime = now;
-  //
-  //     if (e.deltaY > 0 && index < projects.length - 1) {
-  //       leftSentence = `-=${scrollBy}`
-  //       index++
-  //     }
-  //     if (e.deltaY < 0 && index > -1) {
-  //       leftSentence = `+=${scrollBy}`
-  //       index--
-  //     }
-  //
-  //     projects.forEach((project) => {
-  //       if (index < projects.length - 1 && index > -1) {
-  //         gsap.to(project, {
-  //           left: leftSentence,
-  //           scrollTrigger: {
-  //             trigger: project,
-  //             start: 'left, right',
-  //             end: "left 10%",
-  //             scrub: true
-  //           }
-  //         })
-  //       }
-  //     })
-  //   })
-  // }
 }

@@ -4,18 +4,22 @@ main{
   overflow: hidden !important;
   scroll-behavior: smooth;
   box-sizing: border-box;
+  padding: 20px;
 }
 
 section{
   --article-width: 500px;
   position: relative;
+  padding: 20px;
   width: 100%;
   overflow: hidden;
   display: grid;
-  gap: 10px;
   grid-template-columns: repeat(auto-fill, 500px);
   grid-template-rows: 100%;
   grid-auto-flow: column;
+  gap: 20px;
+  perspective: 1000px;
+  transform-style: preserve-3d;
 }
 
 article{
@@ -25,8 +29,12 @@ article{
   box-sizing: border-box;
   border: 1px solid red;
   border-radius: 20px;
-  transition: 0.3s ease;
-  left: 0;
+  transition: 0.1s;
+}
+
+article:hover {
+  transform: scale(1.01);
+  position: relative;
 }
 
 
