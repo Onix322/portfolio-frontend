@@ -19,10 +19,14 @@
     --general-padding: 6em;
     --bg-color: black;
     --purple-color: #25006E;
+    --purple-opac-color: rgba(37, 0, 110, 0.23);
+    --blue-opac-color: rgba(102, 101, 255, 0.23);
+    --pink-opac-color: rgba(206, 0, 224, 0.23);
     --pink-color: #CE00E0;
     --blue-color: #6665FF;
     --white-color: #FFFFFF;
     --liniar-gradient-color: linear-gradient(90deg, var(--blue-color) 0, var(--purple-color) 50%, var(--pink-color) 100%);
+    --liniar-opac-gradient-color: linear-gradient(90deg, var(--blue-opac-color) 0, var(--purple-opac-color) 50%, var(--pink-opac-color) 100%);
   }
 }
 
@@ -107,7 +111,7 @@ h1, h2, h3, h4, h5, h6{
   transform: translate(-50%, -49%);
   position: absolute;
   border-radius: var(--border-r);
-  background: var(--bg-color);
+  background: var(--blue-replacement-color);
   z-index: -1;
 }
 
