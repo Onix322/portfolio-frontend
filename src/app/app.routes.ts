@@ -1,28 +1,15 @@
-import {RouterModule, Routes, withViewTransitions} from '@angular/router';
-import {NotFound} from './pages/not-found/not-found';
+import {RouterModule, Routes} from '@angular/router';
 import {NgModule} from '@angular/core';
 import {Home} from './pages/home/home';
-import {Work} from './pages/work/work';
 
 export const routes: Routes = [
   {
-    path: "home",
-    component: Home,
-    pathMatch: "full"
-  },
-  {
     path: "",
-    redirectTo: '/home',
-    pathMatch: "full"
-  },
-  {
-    path: "work",
-    component: Work,
-    pathMatch: "full"
+    component: Home
   },
   {
     path: "**",
-    component: NotFound,
+    component: Home,
     pathMatch: "full"
   }
 ];
