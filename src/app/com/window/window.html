@@ -1,0 +1,12 @@
+<app-gradient-rectangle [deg]="45" [classes]="['place-content-center', '!w-120', '!h-110', 'shadow-[0_30px_50px_-10px_rgba(0,0,0,1)]', 'flex', 'flex-col', '!p-5']">
+  <div id="action-bar" class="h-[5%] flex justify-items-start items-center gap-2 [&>div]:rounded-2xl [&>div]:p-[6px]">
+    <div class="bg-red-600"></div>
+    <div class="bg-green-600"></div>
+    <div class="bg-yellow-600"></div>
+  </div>
+  <div id="window-content" class="h-[95%] w-full h-full mt-4">
+    <ng-content>
+
+    </ng-content>
+  </div>
+</app-gradient-rectangle>

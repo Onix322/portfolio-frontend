@@ -1,12 +1,12 @@
-import {Component, Input} from '@angular/core';
-import {GradientRectangle} from '../gradient-rectangle/gradient-rectangle';
+import {Component} from '@angular/core';
 import {Chip} from '../chip/chip';
+import {Window} from '../window/window';
 
 @Component({
   selector: 'app-header',
   imports: [
-    GradientRectangle,
-    Chip
+    Chip,
+    Window
   ],
   templateUrl: './header.html',
   styleUrl: './header.css'

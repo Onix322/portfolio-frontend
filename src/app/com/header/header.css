@@ -1,0 +1,27 @@
+#ambient{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+#ambient > div{
+  --edge-mergin: 220px;
+  width: 420px;
+  height: 730px;
+  border-radius: 100%;
+  filter: blur(320px);
+  opacity: 0.54;
+}
+
+#ambient > div:nth-child(1) {
+  background-color: var(--purple-color);
+  rotate: 45deg;
+  position: absolute;
+  left: var(--edge-mergin);
+}
+
+#ambient > div:nth-child(2) {
+  background-color: var(--pink-color);
+  position: absolute;
+  right: var(--edge-mergin);
+  rotate: -45deg;
+}

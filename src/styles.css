@@ -19,14 +19,14 @@
     --general-padding: 6em;
     --bg-color: black;
     --purple-color: #25006E;
-    --purple-opac-color: rgba(37, 0, 110, 0.23);
-    --blue-opac-color: rgba(102, 101, 255, 0.23);
-    --pink-opac-color: rgba(206, 0, 224, 0.23);
-    --pink-color: #CE00E0;
+    --purple-opac-color: #25006E3A;
     --blue-color: #6665FF;
+    --blue-opac-color: #6665FF54;
+    --pink-color: #CE00E0;
+    --pink-opac-color: #CE00E07A;
     --white-color: #FFFFFF;
-    --liniar-gradient-color: linear-gradient(90deg, var(--blue-color) 0, var(--purple-color) 50%, var(--pink-color) 100%);
-    --liniar-opac-gradient-color: linear-gradient(90deg, var(--blue-opac-color) 0, var(--purple-opac-color) 50%, var(--pink-opac-color) 100%);
+    --liniar-gradient-color: linear-gradient(130deg, var(--blue-color) 0, var(--purple-color) 50%, var(--pink-color) 100%);
+    --linear-opacity-gradient-color: linear-gradient(90deg, var(--blue-opac-color) 0, var(--purple-opac-color) 50%, var(--pink-opac-color) 100%);
   }
 }
 
@@ -42,7 +42,7 @@ body{
   font-size: var(--general-font-size);
 }
 
-p, button{
+p, button, textarea{
   font-size: 16px;
 }
 

@@ -4,6 +4,13 @@ m-auto
 grid grid-cols-2 grid-rows-1
 [&>section]:place-content-center
 ">
+  <section id="ambient" class="absolute
+  max-w-(--container-max-width) max-h-(--header-max-height) w-full h-full
+  top-[50%] left-[50%] translate-[-50%] z-[-999]">
+    <div></div>
+    <div></div>
+  </section>
+
   <section id="details">
     <div id="details-wrapper" class="flex flex-col place-content-between h-full max-h-110">
       <h1 class="section-main-title">Alexandru Dobos.</h1>
@@ -18,7 +25,8 @@ grid grid-cols-2 grid-rows-1
     </div>
   </section>
   <section>
-    <app-gradient-rectangle [classes]="['place-content-center', '!w-120', '!h-110']">
-    </app-gradient-rectangle>
+    <app-window>
+        <p>this is a window</p>
+    </app-window>
   </section>
 </header>

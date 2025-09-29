@@ -1,10 +1,10 @@
 .window{
   --border-r: 20px;
+  --border-w: 4px;
   position: relative;
   justify-self: center;
   border-radius: var(--border-r);
   z-index: 0;
-  background: var(--purple-color);
   background-color: var(--purple-opac-color);
 }
 
@@ -13,12 +13,13 @@
   position: absolute;
   inset: 0;
   border-radius: var(--border-r);
-  padding: 4px;
-  background: var(--liniar-opac-gradient-color);
+  padding: var(--border-w);
+  background: var(--linear-opacity-gradient-color);
   mask:
     linear-gradient(#000 0 0) content-box,
     linear-gradient(#000 0 0);
   mask-composite: exclude;
+  z-index: -1;
 }
 
 /*
