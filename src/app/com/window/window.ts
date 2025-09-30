@@ -7,6 +7,7 @@ import {GradientRectangle} from '../gradient-rectangle/gradient-rectangle';
     GradientRectangle
   ],
   templateUrl: './window.html',
+  styleUrl: './window.css'
 })
 export class Window {
 

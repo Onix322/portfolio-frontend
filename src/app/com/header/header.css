@@ -1,27 +1,49 @@
+
 #ambient{
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
 #ambient > div{
-  --edge-mergin: 220px;
-  width: 420px;
-  height: 730px;
+  --side-from: 300px;
+  --top-from: 300px;
+  --diff: 200px;
+  width: 430px;
+  height: 430px;
   border-radius: 100%;
-  filter: blur(320px);
-  opacity: 0.54;
-}
-
-#ambient > div:nth-child(1) {
-  background-color: var(--purple-color);
-  rotate: 45deg;
+  filter: blur(220px) brightness(75%);
   position: absolute;
-  left: var(--edge-mergin);
-}
-
-#ambient > div:nth-child(2) {
   background-color: var(--pink-color);
-  position: absolute;
-  right: var(--edge-mergin);
+  right: var(--side-from);
   rotate: -45deg;
+  /*opacity: 0.4;*/
+  animation-name: ambient;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
+  animation-duration: 35s;
 }
+
+@keyframes ambient{
+  0% {
+    top: var(--top-from);
+    right: var(--side-from);
+  }
+  25%{
+    top: var(--top-from);
+    right: calc(var(--side-from) + var(--diff));
+  }
+  50% {
+    top: calc(var(--top-from) - var(--diff));
+    right: calc(var(--side-from) + var(--diff));
+  }
+  75%{
+    top: calc(var(--top-from) - var(--diff));
+    right: var(--side-from);
+  }
+  100% {
+    top: var(--top-from);
+    right: var(--side-from);
+  }
+}
+
+

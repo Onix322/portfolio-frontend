@@ -1,0 +1,13 @@
+.hljs, .hljs *{
+  font-family: 'Consolas', 'Courier New', monospace !important;
+  font-size: 14px !important;
+}
+
+.hljs-keyword { color: #569cd6 !important; }      /* public, class, static, void */
+.hljs-string { color: #ce9178 !important; }                                        /* "Hello, world!" */
+.hljs-number { color: #b5cea8 !important; }
+.hljs-comment { color: #6a9955 !important; font-style: italic !important; }
+.hljs-title.class_ { color: #4ec9b0 !important; }                                   /* HelloWorld */
+.hljs-title.function_{ color: #dcdcaa !important; }                          /* main */
+.hljs-params { color: #9cdcfe !important; }                                         /* args */
+.hljs-built_in { color: #4fc1ff !important; }

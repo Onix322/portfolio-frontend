@@ -6,6 +6,7 @@
   border-radius: var(--border-r);
   z-index: 0;
   background-color: var(--purple-opac-color);
+  backdrop-filter: blur(200px) opacity(100%) brightness(70%);
 }
 
 .window::before {
