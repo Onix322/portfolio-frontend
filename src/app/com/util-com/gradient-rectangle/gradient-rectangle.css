@@ -1,21 +1,30 @@
-.window{
+#window-gradient {
+  --border-d: 90deg;
   --border-r: 20px;
   --border-w: 4px;
-  position: relative;
-  justify-self: center;
+  --border-g: linear-gradient(
+    var(--border-d),
+    var(--blue-opac-color) 0,
+    var(--purple-opac-color) 50%,
+    var(--pink-opac-color) 100%
+  );
+  /*position: relative;*/
   border-radius: var(--border-r);
   z-index: 0;
   background-color: var(--purple-opac-color);
-  backdrop-filter: blur(200px) opacity(100%) brightness(70%);
+  background-position: 50% 50%;
+  background-repeat: no-repeat;
+  background-size: 200% 200%;
+  backdrop-filter: blur(200px) opacity(200%) brightness(50%);
 }
 
-.window::before {
+#window-gradient::before {
   content: "";
   position: absolute;
   inset: 0;
   border-radius: var(--border-r);
   padding: var(--border-w);
-  background: var(--linear-opacity-gradient-color);
+  background: var(--border-g);
   mask:
     linear-gradient(#000 0 0) content-box,
     linear-gradient(#000 0 0);
@@ -23,10 +32,7 @@
   z-index: -1;
 }
 
-/*
-Explanation
-(1)(2): Those lines are trivial.
+/* Explanation (1)(2): Those lines are trivial.
 (3): We apply a gradient as background and we make its origin the border box (by default it's the padding box).
 (4): Using the mask property, we apply two opaque layers. The bottom one will cover the whole element and the top one will cover only the padding box (so it will not cover the border area)
-(5): We exclude the top layer from the bottom one so that only the border area will be shown!
-*/
+(5): We exclude the top layer from the bottom one so that only the border area will be shown! */

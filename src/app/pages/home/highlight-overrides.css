@@ -3,11 +3,11 @@
   font-size: 14px !important;
 }
 
-.hljs-keyword { color: #569cd6 !important; }      /* public, class, static, void */
-.hljs-string { color: #ce9178 !important; }                                        /* "Hello, world!" */
-.hljs-number { color: #b5cea8 !important; }
-.hljs-comment { color: #6a9955 !important; font-style: italic !important; }
-.hljs-title.class_ { color: #4ec9b0 !important; }                                   /* HelloWorld */
-.hljs-title.function_{ color: #dcdcaa !important; }                          /* main */
+.hljs-keyword { color: #569cd6 !important; }      /* keywords */
+.hljs-string { color: #ce9178 !important; }                                        /* strings */
+.hljs-number { color: #b5cea8 !important; }                                        /* numbers */
+.hljs-comment { color: #6a9955 !important; font-style: italic !important; }         /* comments */
+.hljs-title.class_ { color: #4ec9b0 !important; }                                   /* class names */
+.hljs-title.function_{ color: #dcdcaa !important; }                          /* functions */
 .hljs-params { color: #9cdcfe !important; }                                         /* args */
 .hljs-built_in { color: #4fc1ff !important; }

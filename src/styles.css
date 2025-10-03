@@ -26,8 +26,8 @@
     --pink-color: #CE00E0;
     --pink-opac-color: #CE00E07A;
     --white-color: #FFFFFF;
-    --liniar-gradient-color: linear-gradient(130deg, var(--blue-color) 0, var(--purple-color) 50%, var(--pink-color) 100%);
-    --linear-opacity-gradient-color: linear-gradient(90deg, var(--blue-opac-color) 0, var(--purple-opac-color) 50%, var(--pink-opac-color) 100%);
+    --gradient-deg: 130deg;
+    --liniar-gradient-color: linear-gradient(var(--gradient-deg), var(--blue-color) 0, var(--purple-color) 50%, var(--pink-color) 100%);
   }
 }
 
@@ -35,6 +35,7 @@ body{
   scroll-behavior: smooth;
   background-color: var(--bg-color);
   padding: 0 230px 0 230px;
+  height: 10000px;
 }
 
 * {
@@ -74,6 +75,11 @@ h1, h2, h3, h4, h5, h6{
   font-size: 77px;
   line-height: 100.5%;
   padding: 0 0 20px 0;
+}
+
+.section-third-title {
+  color: var(--white-color);
+  font-size: 48px;
 }
 
 .cta-button {

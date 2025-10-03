@@ -1,0 +1,11 @@
+#ambient {
+  width: 430px;
+  height: 430px;
+  /*border-radius: 100%;*/
+  filter: blur(120px) brightness(45%);
+  position: absolute;
+  background-color: var(--pink-color);
+  z-index: -999;
+}
+
+
