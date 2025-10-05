@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import {Component} from '@angular/core';
 import {Window} from '../../util-com/window/window';
 import {GradientRectangle} from '../../util-com/gradient-rectangle/gradient-rectangle';
 
