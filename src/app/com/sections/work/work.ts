@@ -6,7 +6,7 @@ import {GradientRectangle} from '../../util-com/gradient-rectangle/gradient-rect
   selector: 'app-work',
   imports: [
     Window,
-    GradientRectangle,
+    GradientRectangle
   ],
   templateUrl: './work.html',
   styleUrl: './work.css'

@@ -1,14 +1,13 @@
-import {AfterViewInit, Component, ElementRef, ViewChild} from '@angular/core';
+import {AfterViewInit, Component, ElementRef} from '@angular/core';
 import {Header} from '../../com/sections/header/header';
-import {Navigation} from '../../com/util-com/navigation/navigation';
 import {Work} from '../../com/sections/work/work';
-import {ScrollService} from '../../service/scroll/scroll-service';
+import {gsap} from 'gsap';
+import {Grabber} from '../../service/grabber/grabber';
 
 @Component({
   selector: 'app-home',
   imports: [
     Header,
-    Navigation,
     Work
   ],
   templateUrl: './home.html',
@@ -16,13 +15,16 @@ import {ScrollService} from '../../service/scroll/scroll-service';
 })
 export class Home implements AfterViewInit{
 
-  private scroll: ScrollService;
+  private grabber: Grabber;
 
-  constructor(scroll: ScrollService) {
-    this.scroll = scroll
+  constructor(grabber: Grabber) {
+    this.grabber = grabber
   }
 
-  ngAfterViewInit() {
-    this.scroll.scroll(window)
+  ngAfterViewInit(): void {
+    this.grabber.request<ElementRef<HTMLElement>>("windowGradient")
+      .then((res) => {
+        // the code for edit elements
+      })
   }
 }

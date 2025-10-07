@@ -3,6 +3,7 @@ import {Chip} from '../../util-com/chip/chip';
 import {Window} from '../../util-com/window/window';
 import {Highlight} from 'ngx-highlightjs';
 import {Ambient} from '../../util-com/ambient/ambient';
+import {Grabber} from '../../../service/grabber/grabber';
 
 @Component({
   selector: 'app-header',
@@ -30,8 +31,21 @@ export class Header implements AfterViewInit{
   }
   `;
 
+  private grabber: Grabber
+
+  constructor(grabber: Grabber) {
+    this.grabber = grabber
+  }
+
   ngAfterViewInit() {
     this.ambient.anchor.next(this.windowGradient)
-    console.log(this.windowGradient)
+    this.windowMoving()
+  }
+
+  private windowMoving() {
+    document.addEventListener("DOMContentLoaded", () => {
+      console.log(this.windowGradient)
+      this.grabber.respond<ElementRef<HTMLElement>>('windowGradient', this.windowGradient)
+    })
   }
 }
