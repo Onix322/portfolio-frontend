@@ -43,9 +43,6 @@ export class Header implements AfterViewInit{
   }
 
   private windowMoving() {
-    document.addEventListener("DOMContentLoaded", () => {
-      console.log(this.windowGradient)
-      this.grabber.respond<ElementRef<HTMLElement>>('windowGradient', this.windowGradient)
-    })
+    this.grabber.respond<ElementRef<HTMLElement>>('windowGradient', this.windowGradient)
   }
 }
