@@ -1,4 +1,4 @@
-<section id="work" class="h-(--container-max-width) relative top-[200px]">
+<section #workSection id="work" class="h-(--container-max-width) relative top-[200px]">
   <main class="h-full w-full grid grid-cols-2">
     <div class="wrapper">
       <div class="sticky top-[20px] flex flex-col gap-1">
@@ -6,10 +6,10 @@
         <h3 class="section-third-title">Check this</h3>
         <app-window #window class="border-2 w-fit opacity-0"></app-window>
 <!--        <h3 class="mt-6">Customer name</h3>-->
-        <!--        <app-ambient class="absolute top-0 left-[50%] translate w-full z-[-999] brightness-70"></app-ambient>-->
+<!--                <app-ambient class="absolute top-0 left-[50%] translate w-full z-[-999] brightness-70"></app-ambient>-->
       </div>
     </div>
-    <div class="flex flex-col gap-10">
+    <div #workSectionProjects class="flex flex-col gap-10">
       <app-gradient-rectangle [deg]="270" [classes]="['!w-full', '!h-100']"></app-gradient-rectangle>
       <app-gradient-rectangle [deg]="270" [classes]="['!w-full', '!h-100']"></app-gradient-rectangle>
       <app-gradient-rectangle [deg]="270" [classes]="['!w-full', '!h-100']"></app-gradient-rectangle>
