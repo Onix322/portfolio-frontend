@@ -6,8 +6,6 @@ import {gsap} from 'gsap';
 import {ScrollTrigger} from 'gsap/ScrollTrigger';
 import {CSSPlugin} from 'gsap/CSSPlugin';
 import {ScrollService} from '../../../service/scroll/scroll-service';
-import TweenVars = gsap.TweenVars;
-import {compileOpaqueAsyncClassMetadata} from '@angular/compiler';
 
 @Component({
   selector: 'app-work',
@@ -47,9 +45,7 @@ export class Work implements AfterViewInit{
         this.animateWindow(window.nativeElement)
       })
 
-    this.animateWorkSection(workSection)
-    this.animateWorkSectionProjects(workSectionProjects, workSection)
-
+    this.animateWorkSectionProjectsChildren(workSectionProjects)
   }
 
   private animateWindow(window: HTMLElement) {
@@ -73,39 +69,37 @@ export class Work implements AfterViewInit{
     })
   }
 
-  private animateWorkSection(workSection: HTMLElement): void {
+  private animateWorkSectionProjectsChildren(workSectionProjects: HTMLElement) {
 
-  }
+    const children = Array.from(workSectionProjects.children)
 
-  private animateWorkSectionProjects(workSectionProjects: HTMLElement, trigger: HTMLElement): void {
-    const rect = workSectionProjects.getBoundingClientRect()
-    const initialY = rect.y
+    children.forEach(child => {
+      gsap.set(child, {
+        x: 100,
+        opacity: 0,
+      })
 
-    const scrollTrigger = ScrollTrigger.create({
-      trigger: trigger,
-      markers: true,
-      scrub: true,
-      start: "top 18%",
-      end: "bottom bottom"
+      const tl = gsap.timeline({
+        scrollTrigger: {
+          trigger: child,
+          start: "top 70%",
+          end: "bottom 40%",
+          scrub: true,
+          markers: true,
+        }
+      })
+
+      tl.to(child, {
+        x: 0,
+        opacity: 1,
+        ease: "power4.out",
+        duration: 1,
+      }).to(child, {
+        x: 100,
+        opacity: 0,
+        ease: "power4.in",
+        duration: 1,
+      })
     })
-
-    const outVars: gsap.TweenVars = {
-      y: rect.y - 500,
-      opacity: 0,
-    }
-
-    const inVars: gsap.TweenVars = {
-      y: rect.y - initialY,
-      opacity: 1,
-      duration: 1,
-    }
-
-    const tl = gsap.timeline({
-      scrollTrigger: scrollTrigger
-    })
-
-    tl.from(workSectionProjects, outVars)
-      .to(workSectionProjects, inVars)
-      .to(workSectionProjects, outVars)
   }
 }
