@@ -1,18 +1,13 @@
-import {
-  AfterViewInit,
-  ChangeDetectionStrategy,
-  ChangeDetectorRef,
-  Component,
-  ElementRef,
-  ViewChild
-} from '@angular/core';
+import {AfterViewInit, ChangeDetectorRef, Component, ElementRef, ViewChild} from '@angular/core';
 import {Window} from "../../util-com/window/window";
 import {gsap} from 'gsap';
+import {Chip} from '../../util-com/chip/chip';
 
 @Component({
   selector: 'app-contact',
   imports: [
-    Window
+    Window,
+    Chip
   ],
   templateUrl: './contact.html',
   styleUrl: './contact.css'
@@ -28,7 +23,7 @@ export class Contact implements AfterViewInit{
 
 
   windowSettings: gsap.TweenVars = {
-
+    "--border-c": 'transparent',
   }
   constructor(private cd: ChangeDetectorRef) {
 

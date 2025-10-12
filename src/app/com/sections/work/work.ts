@@ -81,7 +81,7 @@ export class Work implements AfterViewInit{
           start: "center 70%",
           end: "100% 60%",
           scrub: true,
-          markers: true,
+          markers: false,
         },
         defaults: {
           ease: "power4.out",

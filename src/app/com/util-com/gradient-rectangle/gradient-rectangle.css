@@ -2,7 +2,7 @@
   --border-d: 90deg;
   --border-r: 20px;
   --border-w: 4px;
-  --border-g: linear-gradient(
+  --border-c: linear-gradient(
     var(--border-d),
     var(--blue-opac-color) 0,
     var(--purple-opac-color) 50%,
@@ -24,7 +24,7 @@
   inset: 0;
   border-radius: var(--border-r);
   padding: var(--border-w);
-  background: var(--border-g);
+  background: var(--border-c);
   mask:
     linear-gradient(#000 0 0) content-box,
     linear-gradient(#000 0 0);

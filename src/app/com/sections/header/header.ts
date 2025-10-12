@@ -35,7 +35,8 @@ export class Header implements AfterViewInit{
   widowSettings: gsap.TweenVars = {
     width: 600,
     height: 500,
-    boxShadow: '0 10px 100px 10px black'
+    boxShadow: '0 10px 100px 10px black',
+    "--border-c": 'transparent'
   }
 
   private grabber: Grabber
