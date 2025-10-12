@@ -1,10 +1,10 @@
-<app-gradient-rectangle [deg]="45" [classes]="['place-content-center', '!w-130', '!h-110', 'shadow-[0_0_80px_0_rgba(0,0,0,1)]', 'flex', 'flex-col', '!p-5']">
-  <div id="action-bar" class="h-[5%] flex justify-items-start items-center gap-2 [&>div]:rounded-2xl [&>div]:p-[6px]">
+<app-gradient-rectangle [deg]="45" [settings]="settings">
+  <div id="action-bar" class="p-6 h-[5%] flex items-center gap-2 [&>div]:rounded-2xl [&>div]:p-[6px]">
     <div class="bg-red-600"></div>
     <div class="bg-green-600"></div>
     <div class="bg-yellow-600"></div>
   </div>
-  <div id="window-content" class="h-[95%] w-full mt-4">
+  <div id="window-content" #windowContent class="p-5 h-[95%] w-full">
     <ng-content>
 
     </ng-content>

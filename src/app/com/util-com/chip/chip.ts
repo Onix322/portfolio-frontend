@@ -1,5 +1,6 @@
 import {Component, Input} from '@angular/core';
 import {GradientRectangle} from '../gradient-rectangle/gradient-rectangle';
+import {gsap} from 'gsap';
 
 @Component({
   selector: 'app-chip',
@@ -12,4 +13,10 @@ import {GradientRectangle} from '../gradient-rectangle/gradient-rectangle';
 export class Chip {
   @Input()
   text: string = ""
+
+  rectangleSettings: gsap.TweenVars ={
+    padding: 10,
+    placeItems: 'center',
+    width: 100
+  }
 }

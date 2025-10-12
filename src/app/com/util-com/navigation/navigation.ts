@@ -9,5 +9,11 @@ import {GradientRectangle} from '../gradient-rectangle/gradient-rectangle';
   templateUrl: './navigation.html',
 })
 export class Navigation {
-
+  rectangleSettings: gsap.TweenVars = {
+    width: 'fit-content',
+    padding: "10px 30px 10px 30px",
+    display: 'flex',
+    flexDirection: 'row',
+    gap: '40px',
+  }
 }

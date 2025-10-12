@@ -1,3 +1,4 @@
+
 <header class="
 w-full h-full max-w-(--header-max-width) max-h-(--header-max-height)
 m-auto
@@ -17,11 +18,12 @@ grid grid-cols-2 grid-rows-1
       <button class="self-start cta-button">Contact</button>
     </div>
   </section>
-  <section class="relative flex items-center">
+  <section class="relative flex items-center place-content-center">
     <app-ambient #ambient [animate]="true" class="absolute"></app-ambient>
-    <app-window #windowGradient>
-      <pre class="h-full" >
-        <code [highlight]="code" language="java" class="!bg-transparent !text-white p-0 m-0 rounded-2xl !h-full -mt-5"></code>
+    <app-window [settings]="widowSettings" #windowGradient>
+      <pre class="h-full">
+         <code [highlight]="code" language="java"
+               class="!bg-transparent !text-white p-0 m-0 rounded-2xl !h-full"></code>
       </pre>
     </app-window>
   </section>

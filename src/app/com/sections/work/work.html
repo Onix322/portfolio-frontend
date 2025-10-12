@@ -1,18 +1,12 @@
-<section #workSection id="work" class="h-(--container-max-width) relative top-[200px]">
-  <main class="h-full w-full grid grid-cols-2">
-    <div class="wrapper">
-      <div #workDetails class="h-full flex flex-col gap-1">
-        <h2 class="section-main-title">Work</h2>
-        <h3 class="section-third-title">Check this</h3>
-        <app-window #window class="border-2 w-fit opacity-0"></app-window>
-<!--        <h3 class="mt-6">Customer name</h3>-->
-<!--                <app-ambient class="absolute top-0 left-[50%] translate w-full z-[-999] brightness-70"></app-ambient>-->
-      </div>
-    </div>
-    <div #workSectionProjects class="flex flex-col gap-10 relative top-50">
-      <app-gradient-rectangle [deg]="270" [classes]="['!w-full', '!h-100']"></app-gradient-rectangle>
-      <app-gradient-rectangle [deg]="270" [classes]="['!w-full', '!h-100']"></app-gradient-rectangle>
-      <app-gradient-rectangle [deg]="270" [classes]="['!w-full', '!h-100']"></app-gradient-rectangle>
-    </div>
-  </main>
-</section>
+
+<main #workSection id="work" class="h-(--container-max-width) grid grid-cols-2 relative top-[200px]">
+  <div #workDetails class="h-full flex flex-col gap-1 w-full">
+    <h2 class="section-main-title">Work</h2>
+    <h3 class="section-third-title">Check this</h3>
+  </div>
+  <div #workSectionProjects class="flex flex-col gap-5 relative top-30">
+    <app-gradient-rectangle [deg]="270" [settings]="rectangleSettings"></app-gradient-rectangle>
+    <app-gradient-rectangle [deg]="270" [settings]="rectangleSettings"></app-gradient-rectangle>
+    <app-gradient-rectangle [deg]="270" [settings]="rectangleSettings"></app-gradient-rectangle>
+  </div>
+</main>
