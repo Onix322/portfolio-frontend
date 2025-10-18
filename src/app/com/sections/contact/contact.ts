@@ -1,19 +1,21 @@
-import {AfterViewInit, ChangeDetectorRef, Component, ElementRef, ViewChild} from '@angular/core';
+import {AfterViewInit, Component, ElementRef, ViewChild} from '@angular/core';
 import {Window} from "../../util-com/window/window";
 import {gsap} from 'gsap';
-import {Chip} from '../../util-com/chip/chip';
+import {Grabber} from '../../../service/grabber/grabber';
 
 @Component({
   selector: 'app-contact',
   imports: [
-    Window,
-    Chip
+    Window
   ],
   templateUrl: './contact.html',
   styleUrl: './contact.css'
 })
-export class Contact implements AfterViewInit{
+export class Contact implements AfterViewInit {
 
+  windowSettings: gsap.TweenVars = {
+    "--border-c": 'transparent',
+  }
   @ViewChild("contactSection", {read: ElementRef<HTMLElement>})
   private contactSection!: ElementRef<HTMLElement>
   @ViewChild("contactDetails", {read: ElementRef<HTMLElement>})
@@ -21,14 +23,12 @@ export class Contact implements AfterViewInit{
   @ViewChild("contactFrom", {read: ElementRef<HTMLElement>})
   private contactFrom!: ElementRef<HTMLElement>
 
-
-  windowSettings: gsap.TweenVars = {
-    "--border-c": 'transparent',
-  }
-  constructor(private cd: ChangeDetectorRef) {
+  constructor(private grabber: Grabber) {
 
   }
+
   ngAfterViewInit() {
+    this.grabber.respond<ElementRef<HTMLElement>>('forNavigationContactButton', this.contactSection)
 
     const section = this.contactSection.nativeElement
     const details = this.contactDetails.nativeElement
@@ -38,6 +38,5 @@ export class Contact implements AfterViewInit{
 
     console.log(sectionRect)
 
-    this.cd.detectChanges()
   }
 }

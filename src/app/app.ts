@@ -2,6 +2,7 @@ import {AfterViewInit, Component, ElementRef, signal, ViewChild, WritableSignal}
 import {RouterOutlet} from '@angular/router';
 import {ScrollService} from './service/scroll/scroll-service';
 import {Navigation} from './com/util-com/navigation/navigation';
+import {Grabber} from './service/grabber/grabber';
 
 @Component({
   selector: 'app-root',
@@ -19,7 +20,7 @@ export class App implements AfterViewInit{
 
   private scroll: ScrollService;
 
-  constructor(scroll: ScrollService) {
+  constructor(scroll: ScrollService, private grabber: Grabber) {
     this.scroll = scroll
   }
   ngAfterViewInit(): void {
@@ -27,5 +28,7 @@ export class App implements AfterViewInit{
       wrapper: this.wrapper.nativeElement,
       content: this.content.nativeElement
     })
+
+    this.grabber.respond<ElementRef<HTMLElement>>('forNavigationContainer', this.wrapper)
   }
 }

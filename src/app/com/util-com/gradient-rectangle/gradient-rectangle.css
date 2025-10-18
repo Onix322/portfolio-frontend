@@ -26,8 +26,8 @@
   padding: var(--border-w);
   background: var(--border-c);
   mask:
-    linear-gradient(#000 0 0) content-box,
-    linear-gradient(#000 0 0);
+    linear-gradient(var(--bg-color) 0 0) content-box,
+    linear-gradient(var(--bg-color) 0 0);
   mask-composite: exclude;
   z-index: -1;
 }

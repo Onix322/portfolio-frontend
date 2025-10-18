@@ -43,12 +43,13 @@ export class Work implements AfterViewInit{
     this.grabber = grabber
   }
 
-  ngAfterViewInit() {
+  async ngAfterViewInit() {
     const workSectionProjects = this.workSectionProjectsRef.nativeElement
     const section = this.workSectionRef.nativeElement
     const workDetails = this.workDetailsRef.nativeElement
+    this.grabber.respond<ElementRef<HTMLElement>>('forNavigationWorkButton', this.workSectionRef)
 
-    this.grabber.request<ElementRef<HTMLElement>>("forWorkComponent")
+    await this.grabber.request<ElementRef<HTMLElement>>("forWorkComponent")
       .then((window) => {
         const needs: AnimationNeeds = {
           projects: workSectionProjects,
@@ -58,6 +59,7 @@ export class Work implements AfterViewInit{
         }
         this.animateWorkSectionProjectsChildren(needs)
       })
+
   }
 
   private animateWorkSectionProjectsChildren(needs: AnimationNeeds) {

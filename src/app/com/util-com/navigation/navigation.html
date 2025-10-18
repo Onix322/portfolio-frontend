@@ -1,4 +1,12 @@
 <app-gradient-rectangle [settings]="rectangleSettings">
-  <a class="cursor-pointer" href="#work">work</a>
-  <a class="cursor-pointer" href="#contact">contact</a>
+  <div class="nav-buttons-wrapper
+  flex gap-2
+  items-center
+  [&>a]:w-fit
+  [&>a]:p-[10px_20px_10px_20px]
+  ">
+    <a class="cursor-pointer" data-href="work" href="#work" #workButton>work</a>
+    <p>|</p>
+    <a class="cursor-pointer" data-href="contact" href="#contact" #contactButton>contact</a>
+  </div>
 </app-gradient-rectangle>
