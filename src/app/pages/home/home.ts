@@ -1,7 +1,8 @@
-import {Component} from '@angular/core';
+import {AfterViewInit, Component, ElementRef, ViewChild} from '@angular/core';
 import {Header} from '../../com/sections/header/header';
 import {Work} from '../../com/sections/work/work';
 import {Contact} from '../../com/sections/contact/contact';
+import {Grabber} from '../../service/grabber/grabber';
 
 @Component({
   selector: 'app-home',
@@ -13,7 +14,18 @@ import {Contact} from '../../com/sections/contact/contact';
   templateUrl: './home.html',
   styleUrl: './home.css'
 })
-export class Home {
+export class Home implements AfterViewInit{
 
+  @ViewChild(Contact, {read: ElementRef<HTMLElement>})
+  private contact!: ElementRef<HTMLElement>
+  @ViewChild(Work, {read: ElementRef<HTMLElement>})
+  private work!: ElementRef<HTMLElement>
 
+  constructor(private grabber: Grabber) {
+  }
+
+  ngAfterViewInit() {
+    this.grabber.respond<ElementRef<HTMLElement>>('forNavigationContactButton', this.contact)
+    this.grabber.respond<ElementRef<HTMLElement>>('forNavigationWorkButton', this.work)
+  }
 }

@@ -28,7 +28,7 @@ export class Contact implements AfterViewInit {
   }
 
   ngAfterViewInit() {
-    this.grabber.respond<ElementRef<HTMLElement>>('forNavigationContactButton', this.contactSection)
+    // this.grabber.respond<ElementRef<HTMLElement>>('forNavigationContactButton', this.contactSection)
 
     const section = this.contactSection.nativeElement
     const details = this.contactDetails.nativeElement

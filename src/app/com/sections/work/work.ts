@@ -47,7 +47,7 @@ export class Work implements AfterViewInit{
     const workSectionProjects = this.workSectionProjectsRef.nativeElement
     const section = this.workSectionRef.nativeElement
     const workDetails = this.workDetailsRef.nativeElement
-    this.grabber.respond<ElementRef<HTMLElement>>('forNavigationWorkButton', this.workSectionRef)
+    // this.grabber.respond<ElementRef<HTMLElement>>('forNavigationWorkButton', this.workSectionRef)
 
     await this.grabber.request<ElementRef<HTMLElement>>("forWorkComponent")
       .then((window) => {

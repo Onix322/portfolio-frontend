@@ -54,8 +54,7 @@ export class Navigation implements AfterViewInit {
   private applyAnimation(sections: AppSections, buttons: NavButtons) {
     for (const buttonKey of Object.keys(buttons) as (keyof NavButtons)[]) {
       const button = buttons[buttonKey]
-      console.log()
-      button?.addEventListener('click', () => {
+      button?.addEventListener('click', (e) => {
         const sectionDataHref = button?.attributes.getNamedItem('data-href')?.value
         if(!sectionDataHref) {
           console.error("Attr 'data-href' used for scrolling is not defined")
@@ -67,14 +66,11 @@ export class Navigation implements AfterViewInit {
           return
         }
 
-        const sectionBounds = sections[sectionKey]!.getBoundingClientRect();
-
         gsap.to(window, {
           scrollTo: {
-            y: (sectionBounds.top - sectionBounds.height / 2) - window.scrollY,
-          }
+            y: sections[sectionKey]?.offsetTop
+          },
         })
-
       })
     }
   }
