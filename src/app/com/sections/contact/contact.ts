@@ -1,7 +1,5 @@
-import {AfterViewInit, Component, ElementRef, ViewChild} from '@angular/core';
+import {Component} from '@angular/core';
 import {Window} from "../../util-com/window/window";
-import {gsap} from 'gsap';
-import {Grabber} from '../../../service/grabber/grabber';
 
 @Component({
   selector: 'app-contact',
@@ -11,31 +9,9 @@ import {Grabber} from '../../../service/grabber/grabber';
   templateUrl: './contact.html',
   styleUrl: './contact.css'
 })
-export class Contact implements AfterViewInit {
+export class Contact {
 
   windowSettings: gsap.TweenVars = {
     "--border-c": 'transparent',
-  }
-  @ViewChild("contactSection", {read: ElementRef<HTMLElement>})
-  private contactSection!: ElementRef<HTMLElement>
-  @ViewChild("contactDetails", {read: ElementRef<HTMLElement>})
-  private contactDetails!: ElementRef<HTMLElement>
-  @ViewChild("contactFrom", {read: ElementRef<HTMLElement>})
-  private contactFrom!: ElementRef<HTMLElement>
-
-  constructor() {
-
-  }
-
-  ngAfterViewInit() {
-
-    const section = this.contactSection.nativeElement
-    const details = this.contactDetails.nativeElement
-    const form = this.contactFrom.nativeElement
-
-    const sectionRect = section.getBoundingClientRect()
-
-    console.log(sectionRect)
-
   }
 }

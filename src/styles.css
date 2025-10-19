@@ -8,11 +8,11 @@
     --terminal-font: "VT323", monospace;
     --nav-max-height: 90px;
     --nav-width: 100%;
-    --container-max-width: 1920px;
+    --container-max-width: 1580px;
     --container-max-height: fit-content;
     --container-edge-padding: 230px;
     --header-max-width: var(--container-max-width);
-    --header-max-height: 1080px;
+    --footer-max-height: 1920px;
     --body-general-bg-color: black;
     --title-main-font-size: 64px;
     --title-second-font-size: 24px;

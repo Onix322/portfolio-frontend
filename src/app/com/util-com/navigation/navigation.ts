@@ -66,27 +66,37 @@ export class Navigation implements AfterViewInit {
   private animateArrowButton(buttons: NavButtons) {
     if (!buttons.arrow?.parentElement) return
 
+    const tl = gsap.timeline()
+
     gsap.set(buttons.arrow?.parentElement, {
       transitionDuration: 0.2,
       position: 'absolute',
       top: '50%',
       right: buttons.arrow.getBoundingClientRect().width - 10,
       translateY: '-50%',
-      opacity: 0
+      opacity: 0,
+      zIndex: -999
     })
 
-    gsap.to(buttons.arrow?.parentElement, {
-      scrollTrigger: {
-        scrub: true,
-        markers: false,
-        start: "10% top",
-        end: "12% 10%"
-      },
-      transitionDuration: 0.2,
-      transitionDelay: 0.3,
-      opacity: 1,
-      position: 'absolute',
-      right: -buttons.arrow.getBoundingClientRect().width - 20,
+    tl.from(buttons.arrow?.parentElement, {
+      transitionDelay: 0.2,
+      opacity: 0
+    })
+      .to(buttons.arrow?.parentElement, {
+        opacity: 1,
+        transitionDelay: 0.5,
+      })
+      .to(buttons.arrow?.parentElement, {
+        scrollTrigger: {
+          scrub: true,
+          markers: false,
+          start: "10% top",
+          end: "12% 10%"
+        },
+        transitionDelay: 0.5,
+        position: 'absolute',
+        right: -buttons.arrow.getBoundingClientRect().width - 20,
+        zIndex: 999
     })
   }
 

@@ -1,17 +1,17 @@
-<footer #contactSection id="contact" class="h-(--container-max-width) relative top-[200px]">
-    <div #contactDetails class="flex flex-col gap-1">
-      <h2 class="section-main-title">Contact</h2>
-      <h3 class="section-third-title">Let's talk!</h3>
-    </div>
+<footer id="contact" class="!h-(--footer-max-height) relative top-100">
+  <div class="flex flex-col gap-1">
+    <h2 class="section-main-title">Contact</h2>
+    <h3 class="section-third-title">Let's talk!</h3>
+  </div>
 
-  <div class="h-fit top-10">
+  <div class="!h-full top-10">
     <app-window [settings]="windowSettings" class="h-full w-full">
       <div class="flex gap-10 p-5 h-full">
         <div id="img-wrapper" class="max-w-120 h-100 overflow-hidden rounded-2xl">
           <img src="profil.png">
         </div>
 
-        <form #contactFrom action="POST" method="post" class="
+        <form action="POST" method="post" class="
           flex flex-col gap-5 justify-between
           w-full
           ">
@@ -42,7 +42,6 @@
         </form>
       </div>
       </app-window>
-    </div>
-
-  <p class="place-self-center relative top-10">&copy; Copyright by Alexandru Dobos S.R.L.</p>
+    <p class="place-self-center relative top-10">&copy; Copyright by Alexandru Dobos S.R.L.</p>
+  </div>
 </footer>
