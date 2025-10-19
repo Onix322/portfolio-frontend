@@ -23,12 +23,11 @@ export class Contact implements AfterViewInit {
   @ViewChild("contactFrom", {read: ElementRef<HTMLElement>})
   private contactFrom!: ElementRef<HTMLElement>
 
-  constructor(private grabber: Grabber) {
+  constructor() {
 
   }
 
   ngAfterViewInit() {
-    // this.grabber.respond<ElementRef<HTMLElement>>('forNavigationContactButton', this.contactSection)
 
     const section = this.contactSection.nativeElement
     const details = this.contactDetails.nativeElement

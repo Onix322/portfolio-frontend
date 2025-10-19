@@ -20,6 +20,8 @@ export class Home implements AfterViewInit{
   private contact!: ElementRef<HTMLElement>
   @ViewChild(Work, {read: ElementRef<HTMLElement>})
   private work!: ElementRef<HTMLElement>
+  @ViewChild(Header, {read: ElementRef<HTMLElement>})
+  private header!: ElementRef<HTMLElement>
 
   constructor(private grabber: Grabber) {
   }
@@ -27,5 +29,6 @@ export class Home implements AfterViewInit{
   ngAfterViewInit() {
     this.grabber.respond<ElementRef<HTMLElement>>('forNavigationContactButton', this.contact)
     this.grabber.respond<ElementRef<HTMLElement>>('forNavigationWorkButton', this.work)
+    this.grabber.respond<ElementRef<HTMLElement>>('forNavigationArrowButton', this.header)
   }
 }

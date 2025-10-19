@@ -7,34 +7,43 @@ import {Grabber} from '../../../service/grabber/grabber';
 type AppSections = {
   container: HTMLElement | null,
   work: HTMLElement | null,
+  header: HTMLElement | null,
   contact: HTMLElement | null,
 };
 
 type NavButtons = {
   work: HTMLElement | null,
   contact: HTMLElement | null,
+  arrow: HTMLElement | null,
 };
 
 @Component({
   selector: 'app-navigation', imports: [GradientRectangle], templateUrl: './navigation.html',
 })
 export class Navigation implements AfterViewInit {
-  rectangleSettings: gsap.TweenVars = {
+  navSettings: gsap.TweenVars = {
     width: 'fit-content',
+    height: '100% !important',
     padding: "0 10px",
   }
 
-  @ViewChild('workButton', {read: ElementRef<HTMLElement>}) private workButton!: ElementRef<HTMLElement>;
-  @ViewChild('contactButton', {read: ElementRef<HTMLElement>}) private contactButton!: ElementRef<HTMLElement>;
-
-  private grabber: Grabber;
+  upArrowSettings: gsap.TweenVars = {
+    padding: "0 10px",
+  }
   protected sections: AppSections = {
     work: null,
     contact: null,
-    container: null
+    container: null,
+    header: null
   };
+  @ViewChild('workButton', {read: ElementRef<HTMLElement>})
+  private workButton!: ElementRef<HTMLElement>;
+  @ViewChild('contactButton', {read: ElementRef<HTMLElement>})
+  private contactButton!: ElementRef<HTMLElement>;
+  @ViewChild('arrowButton', {read: ElementRef<HTMLElement>})
+  private arrowButton!: ElementRef<HTMLElement>;
 
-  constructor(grabber: Grabber) {
+  constructor(private grabber: Grabber) {
     this.grabber = grabber
     gsap.registerPlugin(ScrollToPlugin)
   }
@@ -42,13 +51,43 @@ export class Navigation implements AfterViewInit {
   async ngAfterViewInit() {
     const workNative = this.workButton.nativeElement
     const contactNative = this.contactButton.nativeElement
+    const arrowNative = this.arrowButton.nativeElement
     const buttons: NavButtons = {
       work: workNative,
-      contact: contactNative
+      contact: contactNative,
+      arrow: arrowNative
     }
     this.sections = await this.grabNecessities()
 
+    this.animateArrowButton(buttons)
     this.applyAnimation(this.sections, buttons)
+  }
+
+  private animateArrowButton(buttons: NavButtons) {
+    if (!buttons.arrow?.parentElement) return
+
+    gsap.set(buttons.arrow?.parentElement, {
+      transitionDuration: 0.2,
+      position: 'absolute',
+      top: '50%',
+      right: buttons.arrow.getBoundingClientRect().width - 10,
+      translateY: '-50%',
+      opacity: 0
+    })
+
+    gsap.to(buttons.arrow?.parentElement, {
+      scrollTrigger: {
+        scrub: true,
+        markers: false,
+        start: "10% top",
+        end: "12% 10%"
+      },
+      transitionDuration: 0.2,
+      transitionDelay: 0.3,
+      opacity: 1,
+      position: 'absolute',
+      right: -buttons.arrow.getBoundingClientRect().width - 20,
+    })
   }
 
   private applyAnimation(sections: AppSections, buttons: NavButtons) {
@@ -56,12 +95,12 @@ export class Navigation implements AfterViewInit {
       const button = buttons[buttonKey]
       button?.addEventListener('click', (e) => {
         const sectionDataHref = button?.attributes.getNamedItem('data-href')?.value
-        if(!sectionDataHref) {
+        if (!sectionDataHref) {
           console.error("Attr 'data-href' used for scrolling is not defined")
           return
         }
         const sectionKey = Object.keys(sections).find(k => k == sectionDataHref) as (keyof AppSections)
-        if(!sectionKey) {
+        if (!sectionKey) {
           console.error("No section found.")
           return
         }
@@ -77,7 +116,10 @@ export class Navigation implements AfterViewInit {
 
   private async grabNecessities() {
     let sections: AppSections = {
-      container: null, work: null, contact: null,
+      container: null,
+      work: null,
+      contact: null,
+      header: null
     }
 
     return await this.grabber.request<ElementRef<HTMLElement>>("forNavigationContainer")
@@ -91,6 +133,10 @@ export class Navigation implements AfterViewInit {
       })
       .then(contactSection => {
         sections.contact = contactSection.nativeElement
+        return this.grabber.request<ElementRef<HTMLElement>>("forNavigationArrowButton")
+      })
+      .then(headerSection => {
+        sections.header = headerSection.nativeElement
         return sections
       })
       .catch(err => {
