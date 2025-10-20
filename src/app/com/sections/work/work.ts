@@ -18,29 +18,22 @@ type AnimationNeeds = {
     GradientRectangle,
   ],
   templateUrl: './work.html',
-  styleUrl: './work.css'
 })
-export class Work implements AfterViewInit{
-
-  @ViewChild('workDetails', {read: ElementRef<HTMLElement>})
-  private workDetailsRef!: ElementRef<HTMLElement>
-
-  @ViewChild('workSection', {read: ElementRef<HTMLElement>})
-  private workSectionRef!: ElementRef<HTMLElement>
-
-  @ViewChild('workSectionProjects', {read: ElementRef<HTMLElement>})
-  private workSectionProjectsRef!: ElementRef<HTMLElement>
-
-  private grabber: Grabber;
+export class Work implements AfterViewInit {
 
   rectangleSettings: gsap.TweenVars = {
     width: '100%',
     height: 500
   }
+  @ViewChild('workDetails', {read: ElementRef<HTMLElement>})
+  private workDetailsRef!: ElementRef<HTMLElement>
+  @ViewChild('workSection', {read: ElementRef<HTMLElement>})
+  private workSectionRef!: ElementRef<HTMLElement>
+  @ViewChild('workSectionProjects', {read: ElementRef<HTMLElement>})
+  private workSectionProjectsRef!: ElementRef<HTMLElement>
 
-  constructor(grabber: Grabber) {
+  constructor(private grabber: Grabber) {
     gsap.registerPlugin(ScrollTrigger, CSSPlugin)
-    this.grabber = grabber
   }
 
   async ngAfterViewInit() {
@@ -58,7 +51,6 @@ export class Work implements AfterViewInit{
         }
         this.animateWorkSectionProjectsChildren(needs)
       })
-
   }
 
   private animateWorkSectionProjectsChildren(needs: AnimationNeeds) {
@@ -68,8 +60,9 @@ export class Work implements AfterViewInit{
     let whereRect = needs.section.getBoundingClientRect()
     let whoRect = needs.who.getBoundingClientRect()
 
+
     children.forEach(child => {
-      const childRect = child.getBoundingClientRect()
+      let childRect = child.getBoundingClientRect()
 
       gsap.set(child, {
         x: 100,
@@ -86,12 +79,13 @@ export class Work implements AfterViewInit{
         },
         defaults: {
           ease: "power4.out",
-          delay: 1,
-          duration: 40
+          duration: 40,
+          yoyo: true
         },
       })
 
       tl.to(needs.who, {
+        position: 'relative',
         x: -whoRect.x + whereRect.x,
         y: (childRect.y - (childRect.height / 2)) - (whoRect.y - (whoRect.height / 2)),
         opacity: 1,
@@ -100,7 +94,6 @@ export class Work implements AfterViewInit{
         x: 0,
         opacity: 1,
       })
-
     })
   }
 }

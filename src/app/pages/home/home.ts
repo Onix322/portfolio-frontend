@@ -12,7 +12,6 @@ import {Grabber} from '../../service/grabber/grabber';
     Contact
   ],
   templateUrl: './home.html',
-  styleUrl: './home.css'
 })
 export class Home implements AfterViewInit{
 

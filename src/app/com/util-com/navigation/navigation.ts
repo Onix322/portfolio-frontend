@@ -115,9 +115,13 @@ export class Navigation implements AfterViewInit {
           return
         }
 
+        console.log(sections[sectionKey]!.offsetTop - document.body.offsetWidth)
+        console.log(sections[sectionKey]?.offsetTop)
+        console.log(document.body.offsetWidth)
+        const goto = sections[sectionKey]!.offsetTop - 320
         gsap.to(window, {
           scrollTo: {
-            y: sections[sectionKey]?.offsetTop
+            y: goto
           },
         })
       })
@@ -139,6 +143,7 @@ export class Navigation implements AfterViewInit {
       })
       .then(workSection => {
         sections.work = workSection.nativeElement
+        console.log(sections.work)
         return this.grabber.request<ElementRef<HTMLElement>>("forNavigationContactButton")
       })
       .then(contactSection => {

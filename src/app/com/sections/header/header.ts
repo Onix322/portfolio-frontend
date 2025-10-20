@@ -5,6 +5,7 @@ import {Highlight} from 'ngx-highlightjs';
 import {Ambient} from '../../util-com/ambient/ambient';
 import {Grabber} from '../../../service/grabber/grabber';
 import {gsap} from 'gsap';
+import {ScrollTrigger} from 'gsap/ScrollTrigger';
 
 @Component({
   selector: 'app-header',
@@ -15,15 +16,19 @@ import {gsap} from 'gsap';
     Ambient
   ],
   templateUrl: './header.html',
-  styleUrl: './header.css'
 })
-export class Header implements AfterViewInit{
+export class Header implements AfterViewInit {
 
-  @ViewChild('windowGradient', { read: ElementRef<HTMLElement> })
+  @ViewChild('windowGradient', {read: ElementRef<HTMLElement>})
   windowGradient!: ElementRef<HTMLElement>;
-  @ViewChild('ambient', { read: Ambient })
+  @ViewChild('ambient', {read: Ambient})
   ambient!: Ambient;
-
+  widowSettings: gsap.TweenVars = {
+    width: 600,
+    height: 500,
+    boxShadow: '0 10px 100px 10px black',
+    "--border-c": 'transparent'
+  }
   protected code = `
   public class HelloWorld {
       public static void main(String[] args) {
@@ -31,14 +36,6 @@ export class Header implements AfterViewInit{
       }
   }
   `;
-
-  widowSettings: gsap.TweenVars = {
-    width: 600,
-    height: 500,
-    boxShadow: '0 10px 100px 10px black',
-    "--border-c": 'transparent'
-  }
-
   private grabber: Grabber
 
   constructor(grabber: Grabber) {
@@ -51,8 +48,9 @@ export class Header implements AfterViewInit{
     this.animateWindowContent()
   }
 
-  private windowMoving(window: ElementRef<HTMLElement>) {
-    this.grabber.respond<ElementRef<HTMLElement>>('forWorkComponent', window)
+  private windowMoving(windowElement: ElementRef<HTMLElement>) {
+
+    this.grabber.respond<ElementRef<HTMLElement>>('forWorkComponent', windowElement)
   }
 
   private animateWindowContent() {

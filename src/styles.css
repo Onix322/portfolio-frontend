@@ -12,6 +12,7 @@
     --container-max-height: fit-content;
     --container-edge-padding: 230px;
     --header-max-width: var(--container-max-width);
+    --header-max-height: 1080px;
     --footer-max-height: 1920px;
     --body-general-bg-color: black;
     --title-main-font-size: 64px;
